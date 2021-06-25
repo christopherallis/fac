@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=.9" />
+    <title>
+        {{#if _fromPage.title}}
+            {{_fromPage.title}} - FAC
+        {{else}}
+            FAC
+        {{/if}}
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="/static/images/fac.svg" alt="Friendly Arabic Church">
+            </div>
+            <button class="menu-button">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <div class="nav-links">
+                <button class="close-button">
+                    <i class="fas fa-times fa-lg"></i>
+                </button>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {{#if _fromPage.preContent}}
+    <div class="base-container">
+        {{{_fromPage.preContent}}}
+    {{else}}
+    <div class="base-container no-image">
+    {{/if}}
+        
+        <div class="content-container">
+            {{{body}}}
+        </div>
+    </div>
+
+    <footer>
+        <div>
+            Friendly Arabic Church | 1292 Whicker Rd | Kernersville, NC 27284
+        </div>
+        <div>
+            Copyright 2021 All Rights Reserved
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/main.js"></script>
+
+</body>
+</html>

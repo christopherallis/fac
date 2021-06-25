@@ -1,0 +1,185 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 20px;
+    transition: height .2s, background-color .2s;
+}
+nav .nav-container {
+    width: 100%;
+}
+nav .logo {
+    display: inline-block;
+    height: 100%;
+    padding-left: 10px;
+}
+nav .logo img {
+    height: 50px;
+    filter: invert(100);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+nav .menu-button {
+    float: right;
+    height: 100%;
+    width: 100px;
+    background-color: inherit;
+    color: inherit;
+    font-size: inherit;
+    border: none;
+}
+
+nav .nav-links {
+    display: none;
+}
+nav .open .nav-links {
+    display: block;
+    background-color: #222;
+    width: 80%;
+    height: 100%;
+    position: fixed;
+    margin-left: 20%;
+    top: 0px;
+}
+nav .close-button {
+    height: 100px;
+    width: 100px;
+    margin-left: calc( 100% - 100px);
+    background-color: inherit;
+    color: inherit;
+    font-size: inherit;
+    border: none;
+}
+nav .nav-links > ul{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav .nav-links > ul > li {  
+    border-bottom: #333 solid 1px;
+}
+nav .nav-links > ul > li:first-child{
+    border-top: #333 solid 1px;
+}
+nav li > a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    font-size: 30px;
+    padding: 20px;
+}
+nav.float {
+    height: 70px;
+    background-color: #222;
+    transition: all .2s;
+}
+nav.hide {
+    top: -100px;
+    transition: top .2s;
+}
+
+
+@media only screen and (min-width: 600px) {
+    nav .nav-container {
+        display: flex;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: stretch;
+    }
+    nav .logo {
+        display: initial;
+    }
+    nav .menu-button {
+        display: none;
+    }
+    nav .close-button {
+        display: none;
+    }
+    nav .nav-links {
+        display: block !important;
+        width: 100%;
+        height: initial;
+        position: initial;
+        margin: 0;
+    }
+    nav .nav-links > ul {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        list-style-type: none;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    nav .nav-links > ul > li {
+        height: 100%;
+        border: none;
+    }
+    nav li > a {
+        line-height: 100px;
+        padding: 0 20px;
+        transition: line-height .2s;
+        font-size: inherit;
+    }
+
+    nav.float li > a {
+        line-height: 70px;
+        transition: all .2s;
+    }
+    
+}
+
+
+.base-container {
+    width: 100%;
+    min-height: 80vh;
+    
+}
+.base-container.no-image {
+    margin-top: 70px;
+}
+
+.image-full {
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.content-container {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+footer {
+    background-color: #111;
+    color: white;
+    padding: 30px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+}
+
+footer > div {
+    padding: 20px;
+}
