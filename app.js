@@ -24,7 +24,7 @@ app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'hbs');
 
 // CONFIGURE STATIC
-app.use('/static', express.static(path.join(__dirname, 'static')))
+app.use(express.static(path.join(__dirname, 'static')))
 
 // CONFIGURE ROUTERS
 app.use('/', indexRouter);
