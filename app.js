@@ -23,8 +23,17 @@ app.engine('hbs', exphbs({
 app.set('views', path.join(__dirname, 'src', 'views'));
 app.set('view engine', 'hbs');
 
+// ENFORCE HTTPS
+app.use((req, res, next) => {
+    if ("https" !== req.headers["x-forwarded-proto"] && "production" === process.env.NODE_ENV) {
+        res.redirect("https://" + req.hostname + req.url);
+    } else {
+        next();
+    }
+})
+
 // CONFIGURE STATIC
-app.use(express.static(path.join(__dirname, 'static')))
+app.use(express.static(path.join(__dirname, 'static')));
 
 // CONFIGURE ROUTERS
 app.use('/', indexRouter);
