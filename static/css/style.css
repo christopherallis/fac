@@ -5,6 +5,7 @@ body {
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     background-color: rgb(244, 245, 247);
+    overflow-x: hidden;
 }
 
 a {
@@ -65,7 +66,8 @@ nav .nav-items a {
 
 }
 
-@media only screen and (min-width: 800px) {
+/*Disables Menu*/
+@media only screen and (min-width: 1040px) {
 
     nav {
         position: relative;
@@ -83,6 +85,7 @@ nav .nav-items a {
         padding: 0;
         width: initial;
         height: 100%;
+        opacity: 1;
     }
 
     nav .nav-items a {
@@ -116,8 +119,6 @@ section.tile.gradient::after {
 
     border-radius: 10px;
 }
-
-
 section.page-header {    
     height: 70vh;
     display: flex;
@@ -135,7 +136,7 @@ section.page-header .title {
 
 section.tile {
     margin: 10px;
-    max-width: 800px;
+    max-width: 500px;
     position: relative;
     background-color: white;
     padding: 10px;
@@ -165,6 +166,68 @@ section.tile span {
     margin-top: -20px;
 }
 
+
+
+/*Adjusts page width manually for tiles*/
+@media only screen and (min-width: 540px) {
+    section.tile {
+        max-width: none;
+        width: 500px;
+        height: 293px;
+        margin: 10px auto;
+    }
+}
+@media only screen and (min-width: 770px) {
+    section.tile-full {
+        width: 700px;
+        height: 394px;
+        margin: 5px auto;
+    }
+    .tile-container {
+        width: 720px;
+        display: flex;
+        flex-direction: row;
+        margin: 0 auto;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .tile-container section.tile {
+        margin: 0px;
+        margin-bottom: 10px;
+        height: 188px;
+        width: 335px;
+    }
+}
+@media only screen and (min-width: 1040px) {
+    section.tile-full {
+        width: 1000px;
+        height: 563px;
+    }
+    .tile-container {
+        width: 1020px;
+    }
+    .tile-container section.tile {
+        margin: 0px;
+        margin-bottom: 10px;
+        width: 485px;
+        height: 273px;
+    }
+}
+@media only screen and (min-width: 1240px) {
+    section.tile-full {
+        width: 1200px;
+        height: 675px;
+    }
+    .tile-container {
+        width: 1220px;
+    }
+    .tile-container section.tile {
+        margin: 0px;
+        margin-bottom: 10px;
+        width: 585px;
+        height: 329px;
+    }
+}
 
 
 footer {
