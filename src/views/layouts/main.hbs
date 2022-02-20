@@ -11,56 +11,43 @@
             FAC
         {{/if}}
     </title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body>
+<body class="">
 
     <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="/images/fac.svg" alt="Friendly Arabic Church">
-            </div>
-            <button class="menu-button">
-                <i class="fas fa-bars fa-lg"></i>
-            </button>
-            <div class="nav-links">
-                <button class="close-button">
-                    <i class="fas fa-times fa-lg"></i>
-                </button>
-                <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                </ul>
-            </div>
+        <div class="overlay">
+            <div class="logo">Friendly Arabic Church</div>
+            <span class="material-icons">menu</span>
+        </div>
+        <div class="nav-items">
+            <a href="">Home</a>
+            <a href="">About Us</a>
         </div>
     </nav>
+    <main>
+        <section class="page-header bck-img gradient" style="background-image: url(/images/pray.jpg)">
+            <div class="title">Sharing the Love of Jesus</div>
+        </section>
 
-    {{#if _fromPage.preContent}}
-    <div class="base-container">
-        {{{_fromPage.preContent}}}
-    {{else}}
-    <div class="base-container no-image">
-    {{/if}}
-        
-        <div class="content-container">
-            {{{body}}}
-        </div>
-    </div>
-
+        <section class="tile bck-img gradient" style="background-image: url(/images/conference.jpg)">
+            <div class="title">2022 Conference</div>
+            <div class="content">Our Anual Conference on Labor Day Week is coming! Sign up now!</div>
+            <span class="material-icons">chevron_right</span>
+        </section>
+    </main>
     <footer>
-        <div>
-            Friendly Arabic Church | 1292 Whicker Rd | Kernersville, NC 27284
-        </div>
-        <div>
-            Copyright 2021 All Rights Reserved
-        </div>
+        <div>© 2022 Friendly Arabic Church. All Rights Reserved.</div>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="/static/js/main.js"></script>
+    <script src="/js/main.js"></script>
 
 </body>
 </html>
