@@ -97,6 +97,13 @@ nav .nav-items a {
 }
 
 
+h1 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 5px;
+    font-size: 25px;
+}
+
 section.bck-img {
     background-position: center;
     background-size: cover;
@@ -135,8 +142,7 @@ section.page-header .title {
 }
 
 section.tile {
-    margin: 10px;
-    max-width: 500px;
+    margin: 20px;
     position: relative;
     background-color: white;
     padding: 10px;
@@ -167,35 +173,75 @@ section.tile span {
 }
 
 
+.default-height {
+    height: initial !important;
+}
+
+.tile-layout {
+    margin: 0 auto;
+}
+
+section.tile-list a {
+    margin: 0px 10px;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    border-top: 1px solid hsla(0,0%,9%,.15);
+}
+section.tile-list a span {
+    display: block;
+}
+section.tile-list a:last-child {
+
+    border-bottom: 1px solid hsla(0,0%,9%,.15);
+}
+
+.tile-container > h1 {
+    text-align: center;
+}
+
 
 /*Adjusts page width manually for tiles*/
 @media only screen and (min-width: 540px) {
     section.tile {
-        max-width: none;
         width: 500px;
         height: 293px;
-        margin: 10px auto;
+        margin: 20px auto;
+    }
+    .tile-layout {
+        width: 520px;
     }
 }
 @media only screen and (min-width: 770px) {
+    .tile-container > h1 {
+        text-align: initial;
+    }
     section.tile-full {
         width: 700px;
         height: 394px;
-        margin: 5px auto;
     }
-    .tile-container {
-        width: 720px;
+    .tile-layout {
         display: flex;
         flex-direction: row;
-        margin: 0 auto;
-        flex-wrap: wrap;
         justify-content: space-between;
+        width: 720px;
+    }
+    .tile-container {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+    }
+    #news {
+        width: calc( 60% - 20px );
+        margin-left: 0px;
     }
     .tile-container section.tile {
         margin: 0px;
-        margin-bottom: 10px;
-        height: 188px;
-        width: 335px;
+        margin-bottom: 20px;
+        width: calc( 100% - 20px );
+        height: 226px;
     }
 }
 @media only screen and (min-width: 1040px) {
@@ -203,36 +249,35 @@ section.tile span {
         width: 1000px;
         height: 563px;
     }
-    .tile-container {
+    .tile-layout {
         width: 1020px;
     }
-    .tile-container section.tile {
-        margin: 0px;
-        margin-bottom: 10px;
-        width: 485px;
-        height: 273px;
+    #news .tile {
+        height: 322px;
     }
+
 }
 @media only screen and (min-width: 1240px) {
     section.tile-full {
         width: 1200px;
         height: 675px;
     }
-    .tile-container {
+    .tile-layout {
         width: 1220px;
     }
-    .tile-container section.tile {
-        margin: 0px;
-        margin-bottom: 10px;
-        width: 585px;
-        height: 329px;
+    #news .tile {
+        height: 389px;
     }
 }
 
 
 footer {
+    border-top: 1px solid hsla(0,0%,9%,.15);
     background-color: white;
     color: grey;
     text-align: center;
-    padding: 50px;
+    padding: 40px;
+}
+footer > div {
+    padding: 10px;
 }
