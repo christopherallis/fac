@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="MobileOptimized" content="width" />
-    <meta name="HandheldFriendly" content="true" />
-    <meta name="viewport" content="width=device-width, initial-scale=.9" />
+    {{!--<meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />--}}
+    <meta name="viewport" content="width=device-width, initial-scale=.9" /> 
     <title>
         {{#if _fromPage.title}}
             {{_fromPage.title}} - FAC
@@ -20,19 +20,21 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body class="">
+<body class="darkmode">
 
-    <nav>
-        <div class="overlay">
-            <a href="/"><div class="logo">Friendly Arabic Church</div></a>
-            <span id="menu-toggle" class="material-icons">menu</span>
-        </div>
-        <div class="nav-items">
-            <a href="/about">About</a>
-            <a href="/">Contact</a>
-            <a href="/">Give</a>
-        </div>
-    </nav>
+    <header>
+        <nav>
+            <div class="overlay">
+                <a href="/"><div class="logo">Friendly Arabic Church</div></a>
+                <span id="menu-toggle" class="material-icons">menu</span>
+            </div>
+            <div class="nav-items">
+                <a href="/about">About</a>
+                <a href="/">Contact</a>
+                <a href="/">Give</a>
+            </div>
+        </nav>
+    </header>
     <main>
        {{{body}}}
     </main>

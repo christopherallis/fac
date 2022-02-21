@@ -1,0 +1,32 @@
+
+@media (prefers-color-scheme: dark) {
+
+    body {
+        background-color: #111 !important;
+        color: white;
+    }
+
+    body nav {
+        background-color: #222;
+        color: white; 
+    }
+
+    body .tile {
+        background-color: #222 !important;
+        color: white ; 
+    }
+
+    body footer{
+        background-color: #222;
+        color: white; 
+    }
+
+    body .nav-items a, body .tile-list a:last-child {
+        border-bottom: 1px solid rgba(216, 216, 216, 0.15) !important;
+    }
+
+    body .tile-list a {
+        border-top: 1px solid rgba(216, 216, 216, 0.15) !important;
+    }
+
+}

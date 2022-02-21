@@ -1,5 +1,7 @@
+@import url("/css/nav.css");
+@import url("/css/darkmode.css");
 
-body {
+html, body {
     padding: 0;
     margin: 0;
     font-size: 18px;
@@ -9,93 +11,9 @@ body {
 }
 
 a {
-    color: initial;
+    color: inherit;
     text-decoration: none;
 }
-
-nav {
-    background-color: white;
-    color: #222;
-    box-shadow: 0px 0px 10px rgba(0,0,0,.4);
-}
-
-nav .overlay {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    z-index: 5;
-}
-
-nav .overlay .logo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
-    font-size: 25px;
-    cursor: pointer;
-}
-nav .overlay span {
-    font-size: 32px;
-    cursor: pointer;
-}
-
-nav .nav-items {
-    position: absolute;
-    background-color: white;
-    height: 100%;
-    width: calc( 100% - 40px );
-    padding: 0 20px;
-
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
-    right: -100%;
-    opacity: 0;
-    transition: right .3s, opacity .3s;
-}
-
-body.menu-open nav .nav-items {
-    right: 0px;
-    opacity: 1;
-    transition: right .5s, opacity .5s;
-}
-
-nav .nav-items a {
-    text-decoration: none;
-    color: black;
-    padding: 20px 0;
-    border-bottom: 1px solid hsla(0,0%,9%,.15);
-
-}
-
-/*Disables Menu*/
-@media only screen and (min-width: 1040px) {
-
-    nav {
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    nav .overlay span {
-        display: none;
-    }
-    nav .nav-items {
-        position: initial;
-        flex-direction: row;
-        padding: 0;
-        width: initial;
-        height: 100%;
-        opacity: 1;
-    }
-
-    nav .nav-items a {
-        padding: 0 20px;
-        border: none;
-        height: 100%;
-    }
-
-}
-
 
 h1 {
     margin: 0;
@@ -105,6 +23,7 @@ h1 {
 }
 
 section.bck-img {
+    color: white;
     background-position: center;
     background-size: cover;
 }
@@ -152,7 +71,7 @@ section.tile {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-    color: white;
+    
 }
 
 
