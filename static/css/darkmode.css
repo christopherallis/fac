@@ -1,7 +1,7 @@
 
 @media (prefers-color-scheme: dark) {
 
-    body {
+    html, body {
         background-color: #111 !important;
         color: white;
     }
@@ -21,12 +21,20 @@
         color: white; 
     }
 
-    body .nav-items a, body .tile-list a:last-child {
+    body .nav-items a {
+        border-bottom: 1px solid rgba(216, 216, 216, 0.15);
+    }
+
+    body .tile-list a:last-child {
         border-bottom: 1px solid rgba(216, 216, 216, 0.15) !important;
     }
 
     body .tile-list a {
         border-top: 1px solid rgba(216, 216, 216, 0.15) !important;
+    }
+
+    .verse-list > a {
+        background-color: #0059b3 !important;
     }
 
 }

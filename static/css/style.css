@@ -10,6 +10,10 @@ html, body {
     overflow-x: hidden;
 }
 
+main {
+    min-height: calc( 100vh - 163px);
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -18,20 +22,21 @@ a {
 h1 {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
     margin-bottom: 5px;
-    font-size: 25px;
+    font-size: 30px;
 }
 
-section.bck-img {
+.bck-img {
     color: white;
     background-position: center;
     background-size: cover;
 }
-section.gradient, section.gradient-round {
+.tile.gradient, .tile.gradient-round {
     position: relative;
 }
 
-section.gradient::after{
+.tile.gradient::after{
     display: block;
     position: absolute;
     background-image: linear-gradient(180deg, transparent, #000);
@@ -41,26 +46,27 @@ section.gradient::after{
     width: 100%;
     content: '';
 }
-section.tile.gradient::after {
+.tile.gradient::after {
 
     border-radius: 10px;
 }
-section.page-header {    
+.page-header {
     height: 70vh;
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
 }
-section.page-header .title {
+.page-header .title {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
     font-size: 40px;
     color: white;
     padding: 20px;
     z-index: 2;
 }
 
-section.tile {
+.tile {
     margin: 20px;
     position: relative;
     background-color: white;
@@ -75,17 +81,18 @@ section.tile {
 }
 
 
-section.tile .title {
+.tile .title {
     font-size: 30px;
     font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
     z-index: 2;
     margin-bottom: 10px;
 }
-section.tile .content {
+.tile .content {
     z-index: 2;
 }
 
-section.tile span {
+.tile span {
     text-align: right;
     z-index: 2;
     margin-top: -20px;
@@ -100,7 +107,7 @@ section.tile span {
     margin: 0 auto;
 }
 
-section.tile-list a {
+.tile-list a {
     margin: 0px 10px;
     padding: 20px 0px;
     display: flex;
@@ -109,10 +116,10 @@ section.tile-list a {
     
     border-top: 1px solid hsla(0,0%,9%,.15);
 }
-section.tile-list a span {
+.tile-list a span {
     display: block;
 }
-section.tile-list a:last-child {
+.tile-list a:last-child {
 
     border-bottom: 1px solid hsla(0,0%,9%,.15);
 }
@@ -124,7 +131,7 @@ section.tile-list a:last-child {
 
 /*Adjusts page width manually for tiles*/
 @media only screen and (min-width: 540px) {
-    section.tile {
+    .tile {
         width: 500px;
         height: 293px;
         margin: 20px auto;
@@ -137,7 +144,7 @@ section.tile-list a:last-child {
     .tile-container > h1 {
         text-align: initial;
     }
-    section.tile-full {
+    .tile-full {
         width: 700px;
         height: 394px;
     }
@@ -156,7 +163,7 @@ section.tile-list a:last-child {
         width: calc( 60% - 20px );
         margin-left: 0px;
     }
-    .tile-container section.tile {
+    .tile-container .tile {
         margin: 0px;
         margin-bottom: 20px;
         width: calc( 100% - 20px );
@@ -164,7 +171,7 @@ section.tile-list a:last-child {
     }
 }
 @media only screen and (min-width: 1040px) {
-    section.tile-full {
+    .tile-full {
         width: 1000px;
         height: 563px;
     }
@@ -177,7 +184,7 @@ section.tile-list a:last-child {
 
 }
 @media only screen and (min-width: 1240px) {
-    section.tile-full {
+    .tile-full {
         width: 1200px;
         height: 675px;
     }
@@ -187,6 +194,23 @@ section.tile-list a:last-child {
     #news .tile {
         height: 389px;
     }
+}
+
+
+.main-content {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.verse-list > a {
+    padding: 4px;
+    background-color: #1E90FF;
+    color: white;
+    display: inline-block;
+    margin-bottom: 3px;
+    border-radius: 5px;
+    font-size: 14px;
 }
 
 
