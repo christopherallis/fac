@@ -11,7 +11,7 @@ html, body {
 }
 
 main {
-    min-height: calc( 100vh - 163px);
+    min-height: calc( 100vh - 215px);
 }
 
 a {
@@ -32,11 +32,11 @@ h1 {
     background-position: center;
     background-size: cover;
 }
-.tile.gradient, .tile.gradient-round {
+.gradient, .gradient-round {
     position: relative;
 }
 
-.tile.gradient::after{
+.gradient::after{
     display: block;
     position: absolute;
     background-image: linear-gradient(180deg, transparent, #000);
@@ -46,7 +46,7 @@ h1 {
     width: 100%;
     content: '';
 }
-.tile.gradient::after {
+.gradient::after {
 
     border-radius: 10px;
 }
