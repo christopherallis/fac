@@ -5,6 +5,7 @@ const path = require('path')
 const indexRouter = require("./src/routes/index.router")
 const aboutRouter = require("./src/routes/about.router")
 const contactRouter = require("./src/routes/contact.router")
+const webhookRouter = require("./src/routes/webhook.router")
 
 const port = process.env.PORT || 3002
 
@@ -41,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'static')));
 app.use('/', indexRouter);
 app.use('/about', aboutRouter);
 app.use('/contact', contactRouter);
+app.use('/webhook', webhookRouter);
 
 // HANDLE 404
 app.use((req, res, next) => {
