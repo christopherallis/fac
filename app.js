@@ -11,6 +11,10 @@ const port = process.env.PORT || 3002
 
 const app = express();
 
+// MIDDLEWARE SETUP
+
+app.use(express.json());
+
 // CONFIGURE HBS
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
