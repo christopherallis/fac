@@ -4,8 +4,9 @@
   "description": "Website for FAC",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js"
+    "start": "node .",
+    "dev": "nodemon . & npm run scss",
+    "scss": "sass --watch src/scss/:static/css/"
   },
   "keywords": [
     "Website"

@@ -1,0 +1,21 @@
+
+
+:root {
+    --background-color: rgb(244, 245, 247);
+    --color: black;
+    --surface-color: white;
+    --border-color: rgba(40,40,40,.15); //hsla(0,0%,9%,.15);
+    --accent-color: #1E90FF;
+    --accent-text-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #111;
+        --color: white;
+        --surface-color: #222;
+        --border-color: rgba(216, 216, 216, 0.15);
+        --accent-color: #0059b3;
+        --accent-text-color: white;
+    }
+}
