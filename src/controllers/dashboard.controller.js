@@ -10,6 +10,7 @@ router.use(session({
     secret: ")asd#$@fj3028i4rjlkjsdjhfl8(#$@W$Hjklj345l@#$%KLzxc",
     resave: true,
     saveUninitialized: false,
+    proxy: (process.env.NODE_ENV == "production"),
     cookie: {
         httpOnly: true,
         secure: (process.env.NODE_ENV == "production"),
