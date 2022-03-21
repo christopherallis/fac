@@ -36,6 +36,7 @@ router.post('/login', async (req, res, next) => {
         let userInfo = await userModel.checkCredentials(req.body.username, req.body.password)
 
         if (userInfo) {
+            console.log(username,"logged in...")
             req.session.loggedin = true
             req.session.username = req.body.username
             req.session.userid = userInfo.id
@@ -58,6 +59,7 @@ router.get('/logout', (req, res, next) => {
 
 // middleware for authenticated actions will go here
 router.use((req, res, next) => {
+    console.log(req.session)
     if (req.session.loggedin) {
         next()
     } else {
