@@ -1,4 +1,3 @@
 local
-ssl
 node_modules
-archive
+src/views/dist

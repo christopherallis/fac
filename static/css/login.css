@@ -1,0 +1,134 @@
+:root {
+  --background-color: rgb(244, 245, 247);
+  --color: black;
+  --surface-color: white;
+  --border-color: rgba(40,40,40,.15);
+  --accent-color: #1E90FF;
+  --accent-text-color: white;
+  --accept-background-color: rgb(6, 143, 6);
+  --accept-text-color: white;
+  --error-background-color: rgb(219, 54, 54);
+  --error-text-color: white;
+  --link-color: #1E90FF;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #111;
+    --color: white;
+    --surface-color: #222;
+    --border-color: rgba(216, 216, 216, 0.15);
+    --accent-color: #0059b3;
+    --accent-text-color: white;
+  }
+}
+html, body {
+  padding: 0;
+  margin: 0;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  background-color: var(--background-color);
+  color: var(--color);
+}
+
+a {
+  color: var(--link-color);
+}
+
+footer {
+  border-top: 1px solid rgba(23, 23, 23, 0.15);
+  background-color: var(--surface-color);
+  color: var(--color);
+  text-align: center;
+  padding: 40px;
+}
+
+footer > div {
+  padding: 10px;
+}
+
+html, body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-top {
+  padding: 30px;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.modal-center {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.4);
+  background-color: var(--surface-color);
+  border-radius: 10px;
+}
+.modal-center .title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 30px 0;
+  width: 100%;
+}
+.modal-center .error {
+  display: flex;
+  align-items: center;
+  background-color: var(--error-background-color);
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid var(--error-background-color);
+  border-radius: 10px;
+}
+.modal-center .error span {
+  margin-right: 5px;
+}
+.modal-center form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin-bottom: 20px;
+}
+.modal-center form label {
+  opacity: 0.5;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  font-size: 13px;
+}
+.modal-center form input {
+  display: block;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: inherit;
+  border-radius: 10px;
+}
+.modal-center form input[type=text], .modal-center form input[type=password] {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+}
+.modal-center form input[type=submit] {
+  background-color: var(--accept-background-color);
+  color: var(--accept-text-color);
+  border: none;
+  font-weight: bold;
+}
+
+p {
+  text-align: center;
+}
+
+/*# sourceMappingURL=login.css.map */

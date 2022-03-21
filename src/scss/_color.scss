@@ -7,6 +7,16 @@
     --border-color: rgba(40,40,40,.15); //hsla(0,0%,9%,.15);
     --accent-color: #1E90FF;
     --accent-text-color: white;
+
+    --accept-background-color: rgb(6, 143, 6);
+    --accept-text-color: white;
+
+    --error-background-color: rgb(219, 54, 54);
+    --error-text-color: white;
+
+    --link-color: #1E90FF;
+
+
 }
 
 @media (prefers-color-scheme: dark) {

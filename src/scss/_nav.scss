@@ -19,6 +19,11 @@ nav {
         justify-content: space-between;
         z-index: 5;
 
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
         .logo {
             font-family: 'Montserrat', sans-serif;
             font-weight: bold;
@@ -50,7 +55,7 @@ nav {
             text-decoration: none;
             padding: 20px 0;
             border-bottom: 1px solid var(--border-color);
-        
+            color: inherit;
         }
     }
 
