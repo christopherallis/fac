@@ -181,7 +181,7 @@ body.menu-open nav .nav-items {
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
-  color: inherit;
+  color: white;
   text-decoration: none;
 }
 .tile .title {

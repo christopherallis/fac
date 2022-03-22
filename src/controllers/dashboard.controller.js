@@ -60,7 +60,6 @@ router.get('/logout', (req, res, next) => {
 
 // middleware for authenticated actions will go here
 router.use((req, res, next) => {
-    console.log(req.session)
     if (req.session.loggedin) {
         next()
     } else {
