@@ -4,7 +4,6 @@ const path = require('path')
 
 const indexRouter = require("./src/controllers/index.controller")
 const aboutRouter = require("./src/controllers/about.controller")
-const contactRouter = require("./src/controllers/contact.controller")
 const webhookRouter = require("./src/controllers/webhook.controller")
 const dashboardRouter = require("./src/controllers/dashboard.controller")
 
@@ -49,7 +48,6 @@ app.use('/dashboard/static',express.static(path.join(__dirname, 'src', 'views', 
 // CONFIGURE ROUTERS
 app.use('/', indexRouter)
 app.use('/about', aboutRouter)
-app.use('/contact', contactRouter)
 app.use('/webhook', webhookRouter)
 app.use('/dashboard', dashboardRouter)
 
