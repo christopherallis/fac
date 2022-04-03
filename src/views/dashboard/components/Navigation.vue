@@ -86,8 +86,6 @@ const router = useRouter();
             display: flex;
             position: relative;
             flex-grow: 1;
-            
-            
         }
     }
     

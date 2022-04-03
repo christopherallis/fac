@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang=""><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Vue App</title>
+  <script defer="defer" src="Vue%20App_files/chunk-vendors.js"></script><script defer="defer" src="Vue%20App_files/app.js"></script><style type="text/css">:root {
+    --background-color: rgb(244, 245, 247);
+    --color: black;
+    --surface-color: white;
+    --border-color: rgba(40,40,40,.15);
+    --accent-color: #1E90FF;
+    --accent-text-color: white;
+
+    --accept-background-color: rgb(6, 143, 6);
+    --accept-text-color: white;
+
+    --error-background-color: rgb(219, 54, 54);
+    --error-text-color: white;
+
+    --link-color: #1E90FF;
+
+
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-color: #111;
+        --color: white;
+        --surface-color: #222;
+        --border-color: rgba(216, 216, 216, 0.15);
+        --accent-color: #0059b3;
+        --accent-text-color: white;
+    }
+}</style><style type="text/css">
+a[data-v-33dce411] {
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        box-sizing: border-box;
+        position: relative;
+}
+.material-icons[data-v-33dce411] {
+        margin-right: 5px;
+}
+a[data-v-33dce411]:hover::before {
+        display: block;
+        position: absolute;
+        content: ' ';
+        width: 6px;
+        height: 60%;
+        left: -3px;
+        background-color: var(--accent-color);
+        border-radius: 10px;
+}
+</style><style type="text/css">
+.overlay {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 40px;
+        padding: 10px;
+        background-color: var(--surface-color);
+}
+nav {
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);
+}
+nav .links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        background-color: var(--surface-color);
+        width: 100%;
+        height: calc( 100% - 44px );
+}
+nav .links.open{
+        display: flex;
+}
+.nav-top div {
+        font-size: 20px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+}
+#menu-toggle {
+        cursor: pointer;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+}
+main {
+        width: 100%;
+}
+@media only screen and (min-width: 800px) {
+.content {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+}
+#menu-toggle {
+            display: none;
+}
+nav {
+            height: 100%;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+}
+nav .links {
+            display: flex;
+            position: relative;
+            flex-grow: 1;
+}
+}
+    
+</style><style type="text/css">@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Roboto&display=swap);</style><style type="text/css">@import url(https://fonts.googleapis.com/icon?family=Material+Icons);</style><style type="text/css">
+body {
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--color);
+}
+.modal-container {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+}
+</style><style type="text/css">
+.container[data-v-1dbfd32c] {
+        padding: 20px;
+        box-sizing: border-box;
+        width: 100%;
+}
+h1[data-v-1dbfd32c] {
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        flex-grow: 1;
+}
+.top[data-v-1dbfd32c] {
+        display: flex;
+        margin-bottom: 20px;
+}
+</style><style type="text/css">
+.btn[data-v-19653b5c] {
+        background-color: var(--surface-color);
+        width: 40px;
+        margin-left: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+}
+.material-icons[data-v-19653b5c] {
+        font-size: 30px;
+}
+.btn[data-v-19653b5c]:hover {
+        background-color: var(--accent-color);
+}
+
+</style><style type="text/css">
+.item[data-v-76d55ba0] {
+        display: flex;
+        gap: 20px;
+        background-color: var(--surface-color);
+        border-radius: 5px;
+        padding: 8px;
+        box-sizing: border-box;
+        align-items: center;
+        margin-bottom: 5px;
+}
+.status[data-v-76d55ba0] {
+        width: 100px;
+}
+.members[data-v-76d55ba0] {
+        position: relative;
+}
+.members > div[data-v-76d55ba0] {
+        display: flex;
+        align-items: center;
+}
+.members .material-icons[data-v-76d55ba0] {
+        margin-right: 10px;
+        font-size: 22px;
+}
+.item.declined > .material-icons[data-v-76d55ba0], .material-icons.false[data-v-76d55ba0] {
+        color: var(--error-background-color);
+}
+.item.accepted > .material-icons[data-v-76d55ba0], .material-icons.true[data-v-76d55ba0] {
+        color: var(--accept-background-color);
+}
+
+
+</style><style type="text/css">
+.btn[data-v-0f717e56] {
+        background-color: var(--surface-color);
+        width: 40px;
+        margin-left: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+}
+.material-icons[data-v-0f717e56] {
+        font-size: 30px;
+}
+.btn[data-v-0f717e56]:hover {
+        background-color: var(--accent-color);
+}
+
+</style><style type="text/css">
+.modal-background.closed[data-v-149fb24e] {
+        display: none;
+}
+.modal-background[data-v-149fb24e] {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.3);
+        pointer-events: auto;
+}
+.modal-background *[data-v-149fb24e] {
+        pointer-events: auto;
+}
+.modal-container[data-v-149fb24e] {
+        padding: 20px;
+        box-sizing: border-box;
+        width: 100%;
+        background-color: var(--background-color);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+}
+.title[data-v-149fb24e] {
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        flex-grow: 1;
+        font-size: 30px;
+        font-weight: bold;
+}
+.modal-content[data-v-149fb24e] {
+        flex-grow: 1;
+        overflow: auto;
+}
+.modal-top .material-icons[data-v-149fb24e] {
+        font-size: 30px;
+        cursor: pointer;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+}
+.modal-top[data-v-149fb24e] {
+        display: flex;
+        margin-bottom: 20px;
+}
+.modal-actions[data-v-149fb24e] {
+        margin-top: 20px;
+}
+@media only screen and (min-width: 800px) {
+.modal-container[data-v-149fb24e] {
+            width: 500px;
+            right: 0;
+}
+}
+</style><style type="text/css">
+input[data-v-2128ebe6] {
+    -webkit-appearance: none;
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: content-box;
+    
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-size: 16px;
+    flex-grow: 1;
+}
+input[data-v-2128ebe6]:not([type=submit]) {
+    background-color: var(--surface-color);
+}
+.label[data-v-2128ebe6] {
+    padding: 5px;
+}
+.row[data-v-2128ebe6] {
+    display: flex;
+    flex-direction: row;
+    
+    gap: 5px;
+    width: 100%;
+}
+
+</style><style type="text/css">
+.button[data-v-0393dab7] {
+        cursor: pointer;
+        padding: 10px;
+        background-color: var(--surface-color);
+        width: 150px;
+        text-align: center;
+        border-radius: 5px;
+        -webkit-user-select: none;
+           -moz-user-select: none;
+            -ms-user-select: none;
+                user-select: none;
+}
+.button[data-v-0393dab7]:hover {
+        background-color: var(--accent-color);
+}
+.invitee-actions[data-v-0393dab7] {
+        margin: 20px 0px;
+        display: flex;
+        gap: 5px;
+        justify-content: flex-end;
+}
+</style></head>
+  <body cz-shortcut-listen="true">
+    <div id="app" data-v-app=""><div><div class="content"><nav><div class="overlay"><div class="nav-top"><div>Wedding Dashboard</div></div><span id="menu-toggle" class="material-icons">menu</span></div><div class="links"><a href="#/" class="" data-v-33dce411=""><div class="material-icons" data-v-33dce411="">space_dashboard</div><div data-v-33dce411="">Anaylitics</div></a><a aria-current="page" href="#/invitations" class="router-link-active router-link-exact-active" data-v-33dce411=""><div class="material-icons" data-v-33dce411="">wysiwyg</div><div data-v-33dce411="">Invitations</div></a></div></nav><main><div class="container" data-v-1dbfd32c=""><div class="top" data-v-1dbfd32c=""><h1 data-v-1dbfd32c="">Invitations</h1><div class="btn" data-v-19653b5c=""><div class="material-icons" data-v-19653b5c="">import_export</div></div><div class="btn" data-v-19653b5c=""><div class="material-icons" data-v-19653b5c="">add</div></div></div><div data-v-0f717e56=""><div class="item pending" data-v-76d55ba0="" data-v-0f717e56=""><div class="material-icons" data-v-76d55ba0="">pending</div><div class="status" data-v-76d55ba0="">Pending</div><div class="members" data-v-76d55ba0=""><div data-v-76d55ba0=""><div class="material-icons pending" data-v-76d55ba0="">help_outline</div> Christopher Allis</div><div data-v-76d55ba0=""><div class="material-icons pending" data-v-76d55ba0="">help_outline</div> Sandy Hanna</div></div></div></div></div></main></div><div class="modal-container"></div></div></div>
+  
+
+</body></html>

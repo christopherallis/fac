@@ -1,7 +1,6 @@
 
 const db = require('../db')
 const bcrypt = require('bcrypt')
-const e = require('express')
 
 const pepper = process.env.PEPPER || "dev"
 
