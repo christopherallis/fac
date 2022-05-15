@@ -45,6 +45,9 @@ app.use(express.static(path.join(__dirname, 'static')))
 
 app.use('/dashboard/static',express.static(path.join(__dirname, 'src', 'views', 'dists')))
 
+// LOAD DATABASES
+require('./src/models/loadModels')
+
 // CONFIGURE ROUTERS
 app.use('/', indexRouter)
 app.use('/about', aboutRouter)

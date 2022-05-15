@@ -7,8 +7,8 @@
     "start": "node .",
     "dev": "nodemon .",
     "scss": "sass --watch src/scss/:static/css/",
-    "serve": "vue-cli-service serve --watch src/views/dashboard/main.js",
-    "build": "vue-cli-service build src/views/dashboard/main.js"
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
   },
   "keywords": [
     "Website"
@@ -24,6 +24,7 @@
     "express-session": "^1.17.2",
     "pg": "^8.7.3",
     "vue": "^3.2.31",
+    "vue-barcode-reader": "^1.0.2",
     "vue-router": "^4.0.14",
     "vue-template-compiler": "^2.6.14"
   },

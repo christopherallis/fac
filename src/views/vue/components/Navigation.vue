@@ -1,13 +1,12 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, defineProps } from 'vue'
 
 import { useRouter } from 'vue-router'
 
-import NavTop from './NavTop.vue'
-import NavButton from './NavButton.vue'
-
 const navOpen = ref(false);
 const router = useRouter();
+
+const props = defineProps(["title"])
 
 </script>
 
@@ -16,15 +15,12 @@ const router = useRouter();
         <nav>
             <div class="overlay">
                 <div class="nav-top">
-                    <div>FAC Dashboard</div>
+                    <div>{{ props.title }}</div>
                 </div>
                 <span id="menu-toggle" @click="navOpen = !navOpen" class="material-icons">menu</span>
             </div>
             <div class="links" :class="(navOpen)?'open':''" @click="navOpen = false">
-                <NavButton route="/" icon="space_dashboard" text="Anaylitics" />
-                <NavButton route="/website" icon="wysiwyg" text="Website" />
-                <NavButton route="/events" icon="event" text="Events" />
-                <NavButton route="/users" icon="people" text="Users" />
+                <slot></slot>
             </div>
         </nav>
         <main>
@@ -67,11 +63,23 @@ const router = useRouter();
         user-select: none;
     }
 
+    .content {
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+    }
+
+    main {
+        height: 100%;
+    }
+
     @media only screen and (min-width: 800px) {
         .content {
-            display: flex;
             width: 100vw;
-            height: 100vh;
+            flex-direction: row;
+        }
+        main {
+            flex-grow: 1;
         }
         #menu-toggle {
             display: none;

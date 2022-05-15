@@ -24,11 +24,11 @@ async function hashPassword(password) {
 }
 
 function createUserTable() {
-    db.query('CREATE TABLE IF NOT EXISTS users (id serial PRIMARY KEY, username text UNIQUE NOT NULL, hash text NOT NULL, email text NOT NULL, permission smallint DEFAULT 3);', (err, result) => {
+    db.query('CREATE TABLE IF NOT EXISTS user (id serial PRIMARY KEY, username text UNIQUE NOT NULL, hash text NOT NULL, email text NOT NULL, permission smallint DEFAULT 3);', (err, result) => {
         if (err) { 
             console.log("ERROR:", err)
         } else {
-            db.query('SELECT EXISTS(SELECT 1 FROM users WHERE username = $1)',["root"]).then((result)=>{
+            db.query('SELECT EXISTS(SELECT 1 FROM user WHERE username = $1)',["root"]).then((result)=>{
                 if (result.rows[0].exists == false) {
                     createUser("root", "password", "friendlyarabic@gmail.com", 0).then(()=>{
                         console.log("User `root` created.")
@@ -45,12 +45,12 @@ function createUserTable() {
 async function createUser(username, password, email, permission) {
     let hash = await hashPassword(password)
 
-    await db.query('INSERT INTO users (username, hash, email, permission) VALUES ($1, $2, $3, $4);', [username, hash, email, permission])
+    await db.query('INSERT INTO user (username, hash, email, permission) VALUES ($1, $2, $3, $4);', [username, hash, email, permission])
 }
 
 async function checkCredentials(username, password) {
 
-    let { rows } = await db.query('SELECT * FROM users WHERE username = $1;', [username])
+    let { rows } = await db.query('SELECT * FROM user WHERE username = $1;', [username])
     if (rows.length > 0) {
         if (await bcrypt.compare(password + pepper, rows[0].hash)) {
             console.log("success")
@@ -62,14 +62,14 @@ async function checkCredentials(username, password) {
 
 
 async function changePermission(sessionUserID, username, permissionLevel) {
-    let { rows } = await db.query('SELECT * FROM users WHERE id = $1 OR username=$2;', [sessionUserID, username])
+    let { rows } = await db.query('SELECT * FROM user WHERE id = $1 OR username=$2;', [sessionUserID, username])
     if (rows.length == 2) { // one user means they are changing it for themselves
         let iSU = rows[0].id == sessionUserID ? 0 : 1 // session user
         let iU = indexSessionUser == 0 ? 1 : 0 // user
 
         if (rows[iSU].id == sessionUserID && rows[iSU].permission <= 1 && rows[iSU].permission > rows[iU].permission && permissionLevel < rows[iSU].permission) {
             // change
-            await db.query('UPDATE users SET permission=$1 WHERE username=$2;', [permissionLevel, username])
+            await db.query('UPDATE user SET permission=$1 WHERE username=$2;', [permissionLevel, username])
         }
     }
     return 
@@ -78,10 +78,10 @@ async function changePermission(sessionUserID, username, permissionLevel) {
 async function changePassword(username, password) {
     let hash = await hashPassword(password)
 
-    await db.query('UPDATE users SET hash=$1 WHERE username=$2;', [hash, username])
+    await db.query('UPDATE user SET hash=$1 WHERE username=$2;', [hash, username])
 }
 
 createUserTable() // this creates if empty, and also creates initial admin user account
 
 
-module.exports = { createUserTable, createUser, changePermission, changePassword , checkCredentials}
+module.exports = { createUser, changePermission, changePassword , checkCredentials}

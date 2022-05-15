@@ -3,7 +3,7 @@ import App from "./Dashboard.vue";
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import AnalyticsView from './views/AnalyticsView.vue'
-import WebsiteView from './views/WebisteView.vue'
+import WebsiteView from './views/WebsiteView.vue'
 import EventsView from './views/EventsView.vue'
 import UsersView from './views/UsersView.vue'
 
