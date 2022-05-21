@@ -12,8 +12,11 @@ const router = useRouter()
         <div class="top">
             <div class="back material-icons" v-show="props.back == 'true'" @click="() => router.go(-1)">chevron_left</div>
             <div class="title">{{ props.title }}</div>
+            <div class="actions">
+                <slot name="actions"></slot>
+            </div>
         </div>
-        <slot></slot>
+        <slot name="content"></slot>
     </div>
 </template>
 
@@ -35,6 +38,10 @@ const router = useRouter()
         font-family: 'Montserrat', sans-serif;
         
         flex-grow: 1;
+    }
+    .actions {
+        display: flex;
+        flex-direction: row;
     }
     .back {
         font-size: 30px;

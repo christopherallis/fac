@@ -29,7 +29,7 @@ const props = defineProps(["title"])
     </div>
 </template>
 
-<style>
+<style scoped>
     .overlay {
         display: flex;
         flex-direction: row;

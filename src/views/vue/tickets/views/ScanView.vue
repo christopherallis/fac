@@ -28,13 +28,15 @@ onUnmounted(()=> {
 
 <template>
     <BaseView title="Scan" back="true">
-        <Card center="true">
-             <div>Scanning...</div>
-        </Card>
-       
-        <List title="History">
-            <ListItem text="Christopher Allis" />
-        </List>
+        <template #content>
+            <Card center="true">
+                <div>Scanning...</div>
+            </Card>
+        
+            <List title="History">
+                <ListItem text="Christopher Allis" />
+            </List>
+        </template>
     </BaseView>
 </template>
 

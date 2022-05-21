@@ -5,13 +5,20 @@ import '@/tempcolor.css'
 import Navigation from '@/components/Navigation.vue'
 import NavButton from '@/components/NavButton.vue'
 
+import CreateEventModal from './modals/CreateEventModal.vue'
+import CreatePersonModal from './modals/CreatePersonModal.vue'
+
 </script>
 
 <template>
-  <Navigation title="FAC Tickets">
-    <NavButton route="/events" icon="qr_code_scanner" text="Scan" />
-    <NavButton route="/tickets" icon="local_activity" text="Tickets" />
-  </Navigation>
+  <div>
+    <Navigation title="FAC Tickets">
+      <NavButton route="/event" icon="local_activity" text="Events" />
+      <NavButton route="/person" icon="group" text="Persons" />
+    </Navigation>
+    <CreateEventModal />
+    <CreatePersonModal />
+  </div>
 </template>
 
 <style>
