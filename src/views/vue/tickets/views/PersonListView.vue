@@ -31,12 +31,13 @@ function itemPersonFactory(personInfo) {
 <template>
     <BaseView title="Persons">
         <template #actions>
-            <ActionButton icon="edit" :onPress="() => eventbus.trigger('modal-open','create-person')" />
+            <ActionButton icon="qr_code_scanner" :onPress="() => scanModeActive = !scanModeActive" :active="scanModeActive" />
+            <ActionButton icon="add" :onPress="() => eventbus.trigger('modal-open','create-person')" />
         </template>
         <template #content>
-            <div>Name: Christopher Allis</div>
-            <List title="Tickets">
-                <ListItem text="Event 1 - 3/14/22 3:14PM" />
+            <List>
+                <ListItem text="Christopher Allis" :onPress="itemPersonFactory({id: 0, name: 'event1'})"/>
+                <ListItem text="Sandy Hanna" :onPress="itemPersonFactory({id: 1, name: 'event2'})"/>
             </List>
         </template>
     </BaseView>

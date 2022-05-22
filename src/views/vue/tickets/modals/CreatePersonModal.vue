@@ -1,6 +1,7 @@
 <script setup>
 
 import ModalView from '@/components/ModalView.vue'
+import ModalButton from '@/components/ModalButton.vue'
 import TextInput from '@/components/TextInput.vue'
 
 </script>
@@ -12,6 +13,9 @@ import TextInput from '@/components/TextInput.vue'
             <TextInput name="Last Name*" id="last-name" />
             <TextInput name="Email" id="email" />
             <TextInput name="Phone" id="phone" />
+        </template>
+        <template #actions>
+            <ModalButton text="Create" />
         </template>
     </ModalView>
 </template>

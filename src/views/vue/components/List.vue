@@ -26,9 +26,7 @@ const props = defineProps(["title"])
         width: 100%;
     }
     .title {
-        font-size: 25px;
-        font-weight: bold;
-        margin-bottom: 3px;
-        margin-left: 5px;
+        font-size: 20px;
+        padding: 5px;
     }
 </style>

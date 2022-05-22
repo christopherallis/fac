@@ -57,6 +57,8 @@ eventbus.on("modal-close", function(name) {
         height: 100vh;
     }
     .modal {
+        display: flex;
+        flex-direction: column;
         padding: 20px;
         width: 100%;
         height: 100%;
@@ -86,6 +88,12 @@ eventbus.on("modal-close", function(name) {
     .content {
         display: flex;
         flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .actions {
+        display: flex;
+        flex-direction: row;
     }
 
     @media only screen and (min-width: 800px) {

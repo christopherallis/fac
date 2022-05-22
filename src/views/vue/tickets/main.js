@@ -2,10 +2,12 @@ import { createApp } from "vue";
 import App from "./Tickets.vue";
 import { createRouter, createWebHashHistory } from 'vue-router'
 
-import PersonView from './views/PersonView.vue'
+
 import RouterView from './views/RouterView.vue'
 import EventView from './views/EventView.vue'
 import ScanView from './views/ScanView.vue'
+import PersonListView from './views/PersonListView.vue'
+import PersonView from './views/PersonView.vue'
 
 import eventbus from '@/lib/event.js'
 
@@ -18,7 +20,12 @@ const router = createRouter({
                 { path: 'scan', component: ScanView }
             ]
         },
-        { path: '/person', component: PersonView },
+        { path: '/person/:id?', component: RouterView, 
+            children: [
+                { path: '', component: PersonListView },
+                { path: ':id', component: PersonView }
+            ]
+        },
     ],
 })
 
