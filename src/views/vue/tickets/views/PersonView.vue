@@ -29,7 +29,7 @@ function itemPersonFactory(personInfo) {
 </script>
 
 <template>
-    <BaseView title="Persons">
+    <BaseView title="Persons" back="true">
         <template #actions>
             <ActionButton icon="edit" :onPress="() => eventbus.trigger('modal-open','create-person')" />
         </template>

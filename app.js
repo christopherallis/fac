@@ -11,6 +11,9 @@ const port = process.env.PORT || 3002
 
 const app = express()
 
+const isProduction = (process.env.NODE_ENV == "production")
+
+
 // MIDDLEWARE SETUP
 
 app.use(express.json())
@@ -39,6 +42,23 @@ app.use((req, res, next) => {
         next()
     }
 })
+
+
+// Redirect to HTTPS
+if (isProduction) {
+    //console.log("Enabled HTTPS Redirect")
+    //app.use(enforce.HTTPS({ trustProtoHeader: true }))
+    //app.set('trust proxy', 1)
+} else {
+    // add CORS header for developement only
+    console.log("Add COR header")
+    app.use((req, res, next) => {
+        res.header("Access-Control-Allow-Origin", "http://localhost:8080")
+        res.header("Access-Control-Allow-Methods", "POST,GET,DELETE,PUT")
+        res.header("Access-Control-Allow-Headers", "Content-Type")
+        next()
+    }) 
+}
 
 // CONFIGURE STATIC
 app.use(express.static(path.join(__dirname, 'static')))

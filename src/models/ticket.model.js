@@ -2,13 +2,13 @@ const db = require('../db')
 
 function createTicketTable() {
     db.query(`
-    CREATE TABLE IF NOT EXISTS ticket (
-        id serial PRIMARY KEY,
-        ticketname text NOT NULL,
-        fromdate timestamp NOT NULL,
-        todate timestamp NOT NULL,
-        description text
-    );      
+        CREATE TABLE IF NOT EXISTS ticket (
+            id serial PRIMARY KEY,
+            eventid int NOT NULL,
+            personid int NOT NULL,
+            dateused timestamp,
+            consumed BOOLEAN
+        );
     `, (err, result) => {
         if (err) { 
             console.log("ERROR:", err)
@@ -16,8 +16,8 @@ function createTicketTable() {
     })
 }
 
-async function create(name, fromdate, todate) {
-    await db.query('INSERT INTO ticket (name, fromdate, todate) VALUES ($1, $2, $3);', [name, fromdate, todate])
+async function create(eventid, personid) {
+    await db.query('INSERT INTO ticket (eventid, personid) VALUES ($1, $2);', [eventid, personid])
 }
 
 async function get(id) {
@@ -25,8 +25,23 @@ async function get(id) {
     return rows[0]
 }
 
-async function update(id, name, fromdate, todate) {
-    await db.query('UPDATE ticket SET name = $2, fromdate = $3, todate = $4  WHERE id = $1;', [id, name, fromdate, todate])
+async function getTicketWithPerson(eventid, personid) {
+    //TODO finish this
+    let { rows } = await db.query(`
+        SELECT 
+            tp.id, tp.eventid, tp.personid, tp.usedate, tp.consumed, 
+            p.firstname, p.lastname, 
+            t.ticketname
+        FROM ticket tp
+        INNER JOIN ticket t ON t.id = tp.eventid
+        INNER JOIN person p ON p.id = tp.personid
+        WHERE tp.eventid = $1 AND tp.personid = $2;
+    `, [eventid, personid])
+    return rows[0]
+}
+
+async function consume(id) {
+    await db.query('UPDATE ticket SET dateused = now(), consumed = $2 WHERE id = $1;', [id, true])
 }
 
 async function remove(id) {
@@ -36,4 +51,4 @@ async function remove(id) {
 createTicketTable()
 
 
-module.exports = { create, get, update, remove }
+module.exports = { create, get, getTicketWithPerson, remove, consume }

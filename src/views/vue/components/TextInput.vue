@@ -1,15 +1,19 @@
 <script setup>
 
-import { defineProps } from 'vue'
+import { defineProps, defineEmits } from 'vue'
 
-const props = defineProps(["name", "id"])
+const props = defineProps(["name", "placeholder", "modelValue"])
+const emit = defineEmits(["update:modelValue"])
 
 </script>
 
 <template>
     <div class="text-input">
-        <label :for="props.id" >{{ props.name }}</label>
-        <input type="text" :id="props.id" />
+        <label v-show="props.name" >{{ props.name }}</label>
+        <input
+            type="text" :value="props.modelValue" :placeholder="placeholder"
+            @input="(event) => emit('update:modelValue', event.target.value)"
+        />
     </div>
 </template>
 
@@ -28,5 +32,6 @@ const props = defineProps(["name", "id"])
         color: var(--color);
         padding: 10px;
         border: none;
+        font-size: inherit;
     }
 </style>

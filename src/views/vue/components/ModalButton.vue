@@ -1,13 +1,14 @@
 <script setup>
 
-import { ref, defineProps } from 'vue'
+import { ref, defineProps, defineEmits } from 'vue'
 
 const props = defineProps(['text','onPress','deactivated'])
+const emits = defineEmits(['click'])
 
 </script>
 
 <template>
-    <div class="item" :class="props.deactivated ? 'deactivated' : ''" @click="props.onPress">
+    <div class="item" :class="props.deactivated ? 'deactivated' : ''" @click="() => emits('click')">
         {{ props.text }}
     </div>
 </template>
@@ -23,9 +24,6 @@ const props = defineProps(['text','onPress','deactivated'])
         border-radius: 10px;
         cursor: pointer;
         flex-grow: 1;
-        
-    }
-    .item:hover {
     }
     .item.deactivated {
         background-color: var(--accent-color);

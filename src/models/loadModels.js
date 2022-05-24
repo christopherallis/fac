@@ -5,5 +5,5 @@ const userModel = require('../models/user.model')
 
 
 const personModel = require('../models/person.model')
-const ticketModel = require('../models/ticket.model')
-const ticketPersonModel = require('../models/ticketperson.model')
+const ticketModel = require('./event.model')
+const ticketPersonModel = require('./ticket.model')

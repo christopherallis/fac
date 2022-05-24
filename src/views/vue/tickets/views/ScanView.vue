@@ -1,7 +1,7 @@
 <script setup>
 
 import { onMounted, onUnmounted } from 'vue'
-import { StreamBarcodeReader } from 'vue-barcode-reader'
+//import { StreamBarcodeReader } from 'vue-barcode-reader'
 
 import BaseView from '@/components/BaseView.vue'
 import List from '@/components/List.vue'
@@ -13,9 +13,25 @@ function onDecode(result) {
     console.log(result)
 }
 
+
+
+let debounce = 0;
+let message = ""
 function onKeyDown(e) {
-    console.log(e.key)
+    const t = Date.now()
+    if (t - debounce > 100) {
+        message = ""
+    }
+    debounce = t
+    if (e.key == "Enter"){
+        onDecode(message)
+        debounce = 0
+        message = ""
+    }
+    else if (e.key.length == 1) message += e.key
+
 }
+
 
 onMounted(() => {
     window.addEventListener('keydown',onKeyDown)
