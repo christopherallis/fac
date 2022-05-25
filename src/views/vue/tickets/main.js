@@ -36,7 +36,7 @@ const router = createRouter({
 const app = createApp(App)
 
 const a = axios.create({
-    baseURL: 'http://localhost:3002'
+    baseURL: 'http://localhost:3002',
 })
 
 app.use(router)
@@ -47,3 +47,5 @@ app.provide("eventbus", eventbus)
 app.mount("#app")
 
 router.replace("event")
+
+document.title = "Ticket System - FAC"

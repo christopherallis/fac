@@ -6,6 +6,7 @@ const indexRouter = require("./src/controllers/index.controller")
 const aboutRouter = require("./src/controllers/about.controller")
 const webhookRouter = require("./src/controllers/webhook.controller")
 const dashboardRouter = require("./src/controllers/dashboard.controller")
+const apiRouter = require("./src/controllers/api.controller")
 
 const port = process.env.PORT || 3002
 
@@ -73,6 +74,7 @@ app.use('/', indexRouter)
 app.use('/about', aboutRouter)
 app.use('/webhook', webhookRouter)
 app.use('/dashboard', dashboardRouter)
+app.use('/api', apiRouter)
 
 // HANDLE 404
 app.use((req, res, next) => {

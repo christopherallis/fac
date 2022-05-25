@@ -13,8 +13,8 @@ const computedData = computed(() => {
         if (item[props.searchProp].toLowerCase().match(props.search.toLowerCase())) {
             let newRow = {}
             
-            for (let key in item) {
-                if (key in props.header) {
+            for (let key in props.header) {
+                if (key in item) {
                     newRow[key] = item[key]
                 }
             }
@@ -31,11 +31,11 @@ const computedData = computed(() => {
     <table>
         <!--<col v-for="(val, key) in props.header" :style="'width:'+val.width"/>-->
         <thead>
-            <tr><th v-for="(val, key) in props.header">{{ val.name }}</th></tr>
+            <tr><th v-for="val in props.header" :key="val.name">{{ val.name }}</th></tr>
         </thead>
         <tbody>
-            <tr v-for="item in computedData" @click="() => emits('rowClicked',item)">
-                <td v-for="(val, key) in item">{{ val }}</td>
+            <tr v-for="item in computedData" :key="item.id" @click="() => emits('rowClicked',item)">
+                <td v-for="val in item" :key="val">{{ val }}</td>
             </tr>
         </tbody>
     </table>

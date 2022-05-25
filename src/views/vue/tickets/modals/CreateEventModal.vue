@@ -15,13 +15,14 @@ const desc = ref("")
 function createEvent() {
     console.log("sent request")
     axios.post("/api/event", {
-        eventName: eventName,
-        desc: desc
+        eventName: eventName.value,
+        desc: desc.value
     }).then((response) => {
         if (response.status == 200) {
             eventName.value = ""
             desc.value = ""
             eventbus.trigger('modal-close','create-event')
+            eventbus.trigger('list-update','event')
         }
     })
 }

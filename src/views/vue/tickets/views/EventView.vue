@@ -1,6 +1,6 @@
 <script setup>
 
-import { inject } from 'vue'
+import { inject, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
 import BaseView from '@/components/BaseView.vue'
@@ -10,10 +10,11 @@ import ActionButton from '@/components/ActionButton.vue'
 
 import { state } from '../scanstate.js'
 
+const axios = inject('axios')
 const eventbus = inject('eventbus')
 const router = useRouter()
 
-
+const eventList = ref([])
 
 function itemEventFactory(eventInfo) {
     return function() {
@@ -21,6 +22,18 @@ function itemEventFactory(eventInfo) {
         router.push(`/event/${eventInfo.id}/scan`)
     }
 }
+
+function getEventList() {
+    axios.get("/api/event/").then((response) => {
+        eventList.value = response.data
+        console.log(response.data)
+    })
+}
+
+// TODO is there a better way of doing this?
+getEventList()
+
+
 
 </script>
 
@@ -31,8 +44,7 @@ function itemEventFactory(eventInfo) {
         </template>
         <template #content>
             <List>
-                <ListItem text="Event 1" :onPress="itemEventFactory({id: 0, name: 'event1'})"/>
-                <ListItem text="Event 2" :onPress="itemEventFactory({id: 1, name: 'event2'})"/>
+                <ListItem v-for="event in eventList" :key="event.id" :text="event.eventname" :onPress="itemEventFactory(event)" />
             </List>
         </template>
     </BaseView>

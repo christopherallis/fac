@@ -7,6 +7,7 @@ import NavButton from '@/components/NavButton.vue'
 
 import CreateEventModal from './modals/CreateEventModal.vue'
 import CreatePersonModal from './modals/CreatePersonModal.vue'
+import CreateTicketModal from './modals/CreateTicketModal.vue'
 
 </script>
 
@@ -18,6 +19,7 @@ import CreatePersonModal from './modals/CreatePersonModal.vue'
     </Navigation>
     <CreateEventModal />
     <CreatePersonModal />
+    <CreateTicketModal />
   </div>
 </template>
 

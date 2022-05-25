@@ -12,6 +12,7 @@ import TextInput from '@/components/TextInput.vue'
 
 import { state } from '../scanstate.js'
 
+const axios = inject('axios')
 const eventbus = inject('eventbus')
 const router = useRouter()
 
@@ -29,20 +30,42 @@ function onRowClicked(personInfo) {
 }
 
 const tableHeader = ref({
-    "name": {name:"Name", width: "200px"},
+    "name": {name:"Name", width: "300px"},
     "id": {name:"ID", width: ""}
 })
-const personList = ref([
-    {"name":"Christopher Allis", "id":0},
-    {"name":"Sandy Hanna", "id": 1}
-])
+
+const personList = ref([])
 
 const searchTermsComputed = computed(() => {
     if (searchModeActive.value) return searchTerms.value
     else return ""
 })
 
+function getPersonList() {
+    axios.get("/api/person/").then((response) => {
+        personList.value = response.data
+        console.log(response.data)
+    })
+}
 
+getPersonList()
+
+eventbus.on('list-update',(name) => {
+    if (name == "person") {
+        getPersonList()
+    }
+})
+
+const computedPersonList = computed(() => {
+    let newList = []
+    for (let index in personList.value) {
+        let x = {...personList.value[index]}
+        x.name = x.firstname+" "+x.lastname
+        newList.push(x)
+    }
+    console.log(newList)
+    return newList
+})
 
 </script>
 
@@ -55,7 +78,7 @@ const searchTermsComputed = computed(() => {
         </template>
         <template #content>
             <TextInput placeholder="Search..." v-model="searchTerms" v-show="searchModeActive" />
-            <ComputedTable :header="tableHeader" :tableData="personList" :search="searchTermsComputed" searchProp="name"  @rowClicked="onRowClicked" />
+            <ComputedTable :header="tableHeader" :tableData="computedPersonList" :search="searchTermsComputed" searchProp="name"  @rowClicked="onRowClicked" />
         </template>
     </BaseView>
 </template>

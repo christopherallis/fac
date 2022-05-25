@@ -25,7 +25,21 @@ async function get(id) {
     return rows[0]
 }
 
-async function getTicketWithPerson(eventid, personid) {
+async function getWithPerson(personid) {
+    let { rows } = await db.query(`
+        SELECT 
+            tp.id as id, tp.dateused, tp.consumed as consumed, 
+            p.id as personid, p.firstname as firstname, p.lastname as lastname, 
+            e.id as eventid, e.eventname as eventname
+        FROM ticket tp
+        INNER JOIN event e ON e.id = tp.eventid
+        INNER JOIN person p ON p.id = tp.personid
+        WHERE tp.personid = $1;
+    `, [personid])
+    return rows
+}
+
+async function getWithPersonAndEvent(eventid, personid) {
     //TODO finish this
     let { rows } = await db.query(`
         SELECT 
@@ -51,4 +65,4 @@ async function remove(id) {
 createTicketTable()
 
 
-module.exports = { create, get, getTicketWithPerson, remove, consume }
+module.exports = { create, get, getWithPerson, getWithPersonAndEvent, remove, consume }

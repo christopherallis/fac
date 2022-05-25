@@ -20,6 +20,11 @@ async function create(firstname, lastname) {
     await db.query('INSERT INTO person (firstname, lastname) VALUES ($1, $2);', [firstname, lastname])
 }
 
+async function getAll() {
+    let { rows } = await db.query('SELECT * FROM person;')
+    return rows
+}
+
 async function get(id) {
     let { rows } = await db.query('SELECT * FROM person WHERE id = $1;', [id])
     return rows[0]
@@ -36,4 +41,4 @@ async function remove(id) {
 createPersonTable()
 
 
-module.exports = { create, get, update, remove }
+module.exports = { create, get, getAll, update, remove }

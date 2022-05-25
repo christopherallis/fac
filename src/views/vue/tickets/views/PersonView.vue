@@ -1,6 +1,6 @@
 <script setup>
 
-import { inject, ref } from 'vue'
+import { inject, ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 
 import BaseView from '@/components/BaseView.vue'
@@ -10,10 +10,27 @@ import ActionButton from '@/components/ActionButton.vue'
 
 import { state } from '../scanstate.js'
 
+const axios = inject('axios')
 const eventbus = inject('eventbus')
 const router = useRouter()
 
 const scanModeActive = ref(false)
+
+const personId = ref(router.currentRoute.value.params.id)
+const personInfo = ref({})
+const ticketList = ref([])
+
+function getPerson() {
+    axios.get("/api/person/"+personId.value).then((response) => {
+        personInfo.value = response.data
+    })
+}
+
+function getTickets() {
+    axios.get("/api/person/"+personId.value+"/ticket").then((response) => {
+        ticketList.value = response.data
+    })
+}
 
 function itemPersonFactory(personInfo) {
     return function() {
@@ -26,17 +43,29 @@ function itemPersonFactory(personInfo) {
     }
 }
 
+getPerson()
+getTickets()
+
+eventbus.on('list-update',(name) => {
+    if (name == "ticket") {
+        getPerson()
+        getTickets()
+    }
+})
+
+
 </script>
 
 <template>
     <BaseView title="Persons" back="true">
         <template #actions>
-            <ActionButton icon="edit" :onPress="() => eventbus.trigger('modal-open','create-person')" />
+            <ActionButton icon="add" :onPress="() => eventbus.trigger('modal-open','create-ticket')" />
+            <!--<ActionButton icon="edit" :onPress="() => eventbus.trigger('modal-open','create-person')" />-->
         </template>
         <template #content>
-            <div>Name: Christopher Allis</div>
+            <div>Name: {{ personInfo.firstname}} {{personInfo.lastname}}</div>
             <List title="Tickets">
-                <ListItem text="Event 1 - 3/14/22 3:14PM" />
+                <ListItem v-for="ticket in ticketList" :key="ticket.id" :text="ticket.eventname" />
             </List>
         </template>
     </BaseView>

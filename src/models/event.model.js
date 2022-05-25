@@ -16,8 +16,13 @@ function createEventTable() {
     })
 }
 
-async function create(name, fromdate, todate) {
-    await db.query('INSERT INTO event (name, fromdate, todate) VALUES ($1, $2, $3);', [name, fromdate, todate])
+async function create(eventname, fromdate, todate) {
+    await db.query('INSERT INTO event (eventname, fromdate, todate) VALUES ($1, now(), now());', [eventname])
+}
+
+async function getAll() {
+    let { rows } = await db.query('SELECT * FROM event;')
+    return rows
 }
 
 async function get(id) {
@@ -25,8 +30,8 @@ async function get(id) {
     return rows[0]
 }
 
-async function update(id, name, fromdate, todate) {
-    await db.query('UPDATE event SET name = $2, fromdate = $3, todate = $4  WHERE id = $1;', [id, name, fromdate, todate])
+async function update(id, eventname, fromdate, todate) {
+    await db.query('UPDATE event SET eventname = $2, fromdate = $3, todate = $4  WHERE id = $1;', [id, eventname, fromdate, todate])
 }
 
 async function remove(id) {
@@ -36,4 +41,4 @@ async function remove(id) {
 createEventTable()
 
 
-module.exports = { create, get, update, remove }
+module.exports = { create, get, getAll, update, remove }
