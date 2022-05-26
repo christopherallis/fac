@@ -2,7 +2,7 @@
 
 import { ref, defineProps, defineEmits, onActivated, computed } from 'vue'
 
-const props = defineProps(["header", "tableData", "title", "onPressFactory", "search", "searchProp"])
+const props = defineProps(["header", "tableData", "title", "onPressFactory", "search", "searchProp", "select"])
 const emits = defineEmits(["rowClicked"])
 
 // Computes the tableData list while removing any item not found in header
@@ -34,7 +34,7 @@ const computedData = computed(() => {
             <tr><th v-for="val in props.header" :key="val.name">{{ val.name }}</th></tr>
         </thead>
         <tbody>
-            <tr v-for="item in computedData" :key="item.id" @click="() => emits('rowClicked',item)">
+            <tr v-for="item in computedData" :class="props.select == item.id ? 'selected' : ''" :key="item.id" @click="() => emits('rowClicked',item)">
                 <td v-for="val in item" :key="val">{{ val }}</td>
             </tr>
         </tbody>
@@ -69,5 +69,8 @@ const computedData = computed(() => {
     }
     tbody tr {
         cursor: pointer;
+    }
+    tbody tr.selected td {
+        background-color: var(--accent-color);
     }
 </style>

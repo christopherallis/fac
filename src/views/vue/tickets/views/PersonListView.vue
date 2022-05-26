@@ -1,6 +1,6 @@
 <script setup>
 
-import { inject, ref, computed } from 'vue'
+import { inject, ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 import BaseView from '@/components/BaseView.vue'
@@ -20,9 +20,13 @@ const scanModeActive = ref(false)
 const searchModeActive = ref(false)
 const searchTerms = ref("")
 
+const selectedPersonId = ref(-1)
+
 function onRowClicked(personInfo) {
     if (scanModeActive.value) {
         // select person
+        console.log(personInfo.id)
+        selectedPersonId.value = personInfo.id
     } else {
         state.personInfo = personInfo
         router.push(`/person/${personInfo.id}`)
@@ -63,9 +67,47 @@ const computedPersonList = computed(() => {
         x.name = x.firstname+" "+x.lastname
         newList.push(x)
     }
-    console.log(newList)
+    newList.sort((a, b) =>  a.id-b.id)
     return newList
 })
+
+function onDecode(result) {
+    console.log(result)
+    if (selectedPersonId.value > -1) {
+        axios.put("/api/person/"+selectedPersonId.value, {
+            uuid: result
+        }).then((response) => {
+            // maybe update the user?
+            // or go to next person
+        })
+    }
+}
+
+let debounce = 0;
+let message = ""
+function onKeyDown(e) {
+    const t = Date.now()
+    if (t - debounce > 100) {
+        message = ""
+    }
+    debounce = t
+    if (e.key == "Enter"){
+        if (message != "") onDecode(message)
+        debounce = 0
+        message = ""
+    }
+    else if (e.key.length == 1) message += e.key
+
+}
+
+
+onMounted(() => {
+    window.addEventListener('keydown',onKeyDown)
+})
+onUnmounted(()=> {
+    window.removeEventListener('keydown', onKeyDown)
+})
+
 
 </script>
 
@@ -78,7 +120,7 @@ const computedPersonList = computed(() => {
         </template>
         <template #content>
             <TextInput placeholder="Search..." v-model="searchTerms" v-show="searchModeActive" />
-            <ComputedTable :header="tableHeader" :tableData="computedPersonList" :search="searchTermsComputed" searchProp="name"  @rowClicked="onRowClicked" />
+            <ComputedTable :header="tableHeader" :tableData="computedPersonList" :search="searchTermsComputed" searchProp="name" :select="selectedPersonId"  @rowClicked="onRowClicked" />
         </template>
     </BaseView>
 </template>

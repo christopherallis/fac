@@ -37,4 +37,11 @@ router.get('/:id/ticket',  async (req, res, next) => {
     res.json(jsonResponse)
 })
 
+router.put('/:id', async (req, res, next) => {
+    if (req.body['uuid'] !== undefined) {
+        await personModel.setQRuuid(req.params['id'], req.body['uuid'])
+        res.sendStatus(200)
+    }
+})
+
 module.exports = router

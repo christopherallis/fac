@@ -6,6 +6,7 @@ function createPersonTable() {
             id serial PRIMARY KEY,
             firstname text NOT NULL,
             lastname text NOT NULL,
+            uuid text,
             email text,
             phone text
         );
@@ -34,6 +35,10 @@ async function update(id, firstname, lastname) {
     await db.query('UPDATE person SET firstname = $2,lastname = $3  WHERE id = $1;', [id, firstname, lastname])
 }
 
+async function setQRuuid(id, uuid) {
+    await db.query('UPDATE person SET uuid = $2 WHERE id = $1;', [id, uuid])
+}
+
 async function remove(id) {
     await db.query('DELETE FROM person WHERE id = $1;', [id])
 }
@@ -41,4 +46,4 @@ async function remove(id) {
 createPersonTable()
 
 
-module.exports = { create, get, getAll, update, remove }
+module.exports = { create, get, getAll, setQRuuid, update, remove }
