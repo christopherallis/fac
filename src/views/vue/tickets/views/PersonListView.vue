@@ -20,17 +20,9 @@ const scanModeActive = ref(false)
 const searchModeActive = ref(false)
 const searchTerms = ref("")
 
-const selectedPersonId = ref(-1)
-
 function onRowClicked(personInfo) {
-    if (scanModeActive.value) {
-        // select person
-        console.log(personInfo.id)
-        selectedPersonId.value = personInfo.id
-    } else {
-        state.personInfo = personInfo
-        router.push(`/person/${personInfo.id}`)
-    }
+    state.personInfo = personInfo
+    router.push(`/person/${personInfo.id}`)
 }
 
 const tableHeader = ref({
@@ -71,42 +63,7 @@ const computedPersonList = computed(() => {
     return newList
 })
 
-function onDecode(result) {
-    console.log(result)
-    if (selectedPersonId.value > -1) {
-        axios.put("/api/person/"+selectedPersonId.value, {
-            uuid: result
-        }).then((response) => {
-            // maybe update the user?
-            // or go to next person
-        })
-    }
-}
 
-let debounce = 0;
-let message = ""
-function onKeyDown(e) {
-    const t = Date.now()
-    if (t - debounce > 100) {
-        message = ""
-    }
-    debounce = t
-    if (e.key == "Enter"){
-        if (message != "") onDecode(message)
-        debounce = 0
-        message = ""
-    }
-    else if (e.key.length == 1) message += e.key
-
-}
-
-
-onMounted(() => {
-    window.addEventListener('keydown',onKeyDown)
-})
-onUnmounted(()=> {
-    window.removeEventListener('keydown', onKeyDown)
-})
 
 
 </script>
@@ -115,12 +72,11 @@ onUnmounted(()=> {
     <BaseView title="Persons">
         <template #actions>
             <ActionButton icon="search" :onPress="() => searchModeActive = !searchModeActive" :active="searchModeActive" />
-            <ActionButton icon="qr_code_scanner" :onPress="() => scanModeActive = !scanModeActive" :active="scanModeActive" />
             <ActionButton icon="add" :onPress="() => eventbus.trigger('modal-open','create-person')" />
         </template>
         <template #content>
             <TextInput placeholder="Search..." v-model="searchTerms" v-show="searchModeActive" />
-            <ComputedTable :header="tableHeader" :tableData="computedPersonList" :search="searchTermsComputed" searchProp="name" :select="selectedPersonId"  @rowClicked="onRowClicked" />
+            <ComputedTable :header="tableHeader" :tableData="computedPersonList" :search="searchTermsComputed" searchProp="name"  @rowClicked="onRowClicked" />
         </template>
     </BaseView>
 </template>

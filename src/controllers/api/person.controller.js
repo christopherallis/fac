@@ -23,8 +23,10 @@ router.get('/:id?',  async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     let firstName = req.body.firstname
     let lastName = req.body.lastname
-    let desc = req.body.desc
-    personModel.create(firstName, lastName)
+    let uuid = req.body.uuid
+    let agegroup = req.body.agegroup
+    console.log(firstName, lastName, uuid, agegroup)
+    await personModel.create(firstName, lastName, uuid, agegroup)
     res.sendStatus(200)
 })
 
@@ -38,10 +40,7 @@ router.get('/:id/ticket',  async (req, res, next) => {
 })
 
 router.put('/:id', async (req, res, next) => {
-    if (req.body['uuid'] !== undefined) {
-        await personModel.setQRuuid(req.params['id'], req.body['uuid'])
-        res.sendStatus(200)
-    }
+    // update
 })
 
 module.exports = router

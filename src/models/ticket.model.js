@@ -54,8 +54,22 @@ async function getWithPersonAndEvent(eventid, personid) {
     return rows[0]
 }
 
-async function consume(id) {
-    await db.query('UPDATE ticket SET dateused = now(), consumed = $2 WHERE id = $1;', [id, true])
+async function consume(eventid, uuid) {
+    let q1 = await db.query('SELECT * FROM person WHERE uuid = $1;', [uuid])
+    if (q1.rows.length == 0) {
+        throw 'User not found!'
+    }
+
+    let q2 = await db.query(`
+        UPDATE ticket SET dateused = now(), consumed = $3 
+        WHERE eventid = $1 AND personid = $2;
+    `, [eventid, q1.rows[0].id, true])
+    console.log(q2.rowCount)
+    if ( q2.rowCount > 0) {
+        return [true, q1.rows[0]]
+    }
+    return [false, q1.rows[0]]
+    
 }
 
 async function remove(id) {

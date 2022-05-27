@@ -20,19 +20,33 @@ router.get('/:id?',  async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
-    
     let personId = req.body.personid
 
     let eventid = req.body.eventid
     let list = req.body.list
     if (list !== undefined) {
         for (let i in list) {
-            ticketModel.create(list[i], personId)
+            await ticketModel.create(list[i], personId)
         }
     } else {
-        ticketModel.create(eventid, personId)
+        await ticketModel.create(eventid, personId)
     }
     res.sendStatus(200)
+})
+
+router.post('/consume', async (req, res, next) => {
+    let eventid = req.body.eventid
+    let uuid = req.body.uuid
+
+    try {
+        let [success, person] = await ticketModel.consume(eventid, uuid)
+        
+        res.status(success ? 200 : 400).json(person)
+    } catch(e) {
+        console.log(e)
+        res.sendStatus(404)
+    }
+
 })
 
 module.exports = router
