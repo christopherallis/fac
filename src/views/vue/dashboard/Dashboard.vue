@@ -1,13 +1,19 @@
 <script setup>
 import { ref } from 'vue'
-import './tempcolor.css'
+import '@/tempcolor.css'
 
-import Navigation from './components/Navigation.vue'
+import Navigation from '@/components/Navigation.vue'
+import NavButton from '@/components/NavButton.vue'
 
 </script>
 
 <template>
-  <Navigation />
+  <Navigation title="FAC Dashboard">
+    <NavButton route="/" icon="space_dashboard" text="Anaylitics" />
+    <NavButton route="/website" icon="wysiwyg" text="Website" />
+    <NavButton route="/events" icon="event" text="Events" />
+    <NavButton route="/users" icon="people" text="Users" />
+  </Navigation>
 </template>
 
 <style>

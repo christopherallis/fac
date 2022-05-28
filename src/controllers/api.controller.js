@@ -1,10 +1,13 @@
 const express = require('express');
 
+const eventRouter = require('./api/event.controller')
+const personRouter = require('./api/person.controller')
+const ticketRouter = require('./api/ticket.controller')
 
-const router = express.Router();
+const router = require('express-promise-router')()
 
-router.get('/user', (req, res, next) => {
-    res.render('partials/index');
-});
+router.use('/event', eventRouter)
+router.use('/person', personRouter)
+router.use('/ticket', ticketRouter)
 
 module.exports = router

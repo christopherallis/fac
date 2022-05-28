@@ -1,6 +1,6 @@
 <script setup>
 
-import BaseView from '../components/BaseView.vue'
+import BaseView from '@/components/BaseView.vue'
 
 </script>
 
