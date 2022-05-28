@@ -14,33 +14,19 @@ const axios = inject('axios')
 const eventbus = inject('eventbus')
 const router = useRouter()
 
-const scanModeActive = ref(false)
-
-const personId = ref(router.currentRoute.value.params.id)
 const personInfo = ref({})
 const ticketList = ref([])
 
 function getPerson() {
-    axios.get("/api/person/"+personId.value).then((response) => {
+    axios.get("/api/person/"+router.currentRoute.value.params.id).then((response) => {
         personInfo.value = response.data
     })
 }
 
 function getTickets() {
-    axios.get("/api/person/"+personId.value+"/ticket").then((response) => {
+    axios.get("/api/person/"+router.currentRoute.value.params.id+"/ticket").then((response) => {
         ticketList.value = response.data
     })
-}
-
-function itemPersonFactory(personInfo) {
-    return function() {
-        if (scanModeActive.value) {
-            // select person
-        } else {
-            state.personInfo = personInfo
-            router.push(`/person/${personInfo.id}`)
-        }
-    }
 }
 
 getPerson()

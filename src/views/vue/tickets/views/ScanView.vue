@@ -1,13 +1,16 @@
 <script setup>
 
-import { onMounted, onUnmounted, ref, inject } from 'vue'
+import { onMounted, onUnmounted, ref, inject, computed } from 'vue'
 import { useRouter } from 'vue-router'
 //import { StreamBarcodeReader } from 'vue-barcode-reader'
 
 import BaseView from '@/components/BaseView.vue'
 import List from '@/components/List.vue'
 import ListItem from '@/components/ListItem.vue'
+import ComputedTable from '../../components/ComputedTable.vue'
 import Card from '@/components/Card.vue'
+import ActionButton from '@/components/ActionButton.vue'
+
 
 const axios = inject('axios')
 const router = useRouter()
@@ -16,22 +19,36 @@ const eventId = ref(router.currentRoute.value.params.id)
 
 const history = ref([])
 
+const tableHeader = ref({
+    "id": {name:"ID", width: ""},
+    "name": {name:"Name"},
+    "agegroup": {name: "Age Group"}
+})
+
+
+const computedHistory = computed(() => {
+    let newList = []
+    for (let index in history.value) {
+        let x = {...history.value[index]}
+        x.name = x.firstname+" "+x.lastname
+        newList.unshift(x)
+    }
+    return newList
+})
 
 function onDecode(result) {
     axios.post("/api/ticket/consume", {
-        eventid: eventId.value,
+        eventid: router.currentRoute.value.params.id,
         uuid: result,
     }).then((response) => {
-        if (response.status == 200) {
-            history.value.push("Success")
+        if (response.data.success) {
+            history.value.push({...response.data.person, "_class":"success"})
+        } else {
+            history.value.push({...response.data.person, "_class":"fail"})
         }
             
     }).catch((error) => {
-        if (error.response.status == 400) {
-            history.value.push("Failure")
-        } else {
-            console.log("Not Found")
-        }
+        console.log("Not Found")
     })
 
 }
@@ -53,6 +70,9 @@ function onKeyDown(e) {
 
 }
 
+function openManualScan(){
+    router.push('/event/'+router.currentRoute.value.params.id+'/mscan')
+}
 
 onMounted(() => {
     window.addEventListener('keydown',onKeyDown)
@@ -65,14 +85,15 @@ onUnmounted(()=> {
 
 <template>
     <BaseView title="Scan" back="true">
+        <template #actions>
+            <ActionButton icon="list" :onPress="openManualScan" />
+        </template>
         <template #content>
             <Card center="true">
                 <div>Scanning...</div>
             </Card>
-        
-            <List title="History">
-                <ListItem v-for="(val, index) in history" :key="index" :text="val" />
-            </List>
+
+            <ComputedTable :header="tableHeader" :data="computedHistory" />
         </template>
     </BaseView>
 </template>

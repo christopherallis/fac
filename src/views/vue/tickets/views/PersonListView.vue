@@ -76,7 +76,7 @@ const computedPersonList = computed(() => {
         </template>
         <template #content>
             <TextInput placeholder="Search..." v-model="searchTerms" v-show="searchModeActive" />
-            <ComputedTable :header="tableHeader" :tableData="computedPersonList" :search="searchTermsComputed" searchProp="name"  @rowClicked="onRowClicked" />
+            <ComputedTable :header="tableHeader" :data="computedPersonList" :search="searchTermsComputed" searchProp="name"  @rowClicked="onRowClicked" />
         </template>
     </BaseView>
 </template>

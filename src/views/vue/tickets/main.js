@@ -8,6 +8,7 @@ import EventView from './views/EventView.vue'
 import ScanView from './views/ScanView.vue'
 import PersonListView from './views/PersonListView.vue'
 import PersonView from './views/PersonView.vue'
+import ManualScanView from './views/ManualScanView.vue'
 
 import axios from "axios"
 import VueAxios from "vue-axios";
@@ -19,7 +20,8 @@ const router = createRouter({
         { path: '/event/:id?', component: RouterView,
             children: [
                 { path: '', component: EventView },
-                { path: 'scan', component: ScanView }
+                { path: 'scan', component: ScanView },
+                { path: 'mscan', component: ManualScanView }
             ]
         },
         { path: '/person', component: RouterView, 

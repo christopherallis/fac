@@ -2,12 +2,12 @@
 
 import { ref, defineProps } from 'vue'
 
-const props = defineProps(['text','onPress'])
+const props = defineProps(['text','onPress', 'selected'])
 
 </script>
 
 <template>
-    <div class="item" @click="props.onPress">
+    <div class="item" :class="(props.selected !== undefined && props.selected == true) && 'selected'" @click="props.onPress">
         <div class="text">{{ props.text }}</div>
         <div class="material-icons" v-show="props.onPress != null">chevron_right</div>
     </div>
@@ -23,6 +23,9 @@ const props = defineProps(['text','onPress'])
         margin-bottom: 5px;
         border-radius: 10px;
         cursor: pointer;
+    }
+    .selected {
+        background-color: green;
     }
     .text {
         flex-grow: 1;

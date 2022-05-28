@@ -13,7 +13,12 @@ router.get('/:id?',  async (req, res, next) => {
     if (req.params['id'] !== undefined) {
         jsonResponse = await ticketModel.get(req.params.id)
     } else {
-        jsonResponse = await ticketModel.getAll()
+        console.log(req.query)
+        if (req.query['eventid'] !== undefined) {
+            jsonResponse = await ticketModel.getWithEvent(req.query.eventid)
+        } else {
+            res.sendStatus(400)
+        }
     }
     console.log(jsonResponse)
     res.json(jsonResponse)
@@ -41,7 +46,7 @@ router.post('/consume', async (req, res, next) => {
     try {
         let [success, person] = await ticketModel.consume(eventid, uuid)
         
-        res.status(success ? 200 : 400).json(person)
+        res.json({success: success, person: person})
     } catch(e) {
         console.log(e)
         res.sendStatus(404)

@@ -70,7 +70,7 @@ router.use((req, res, next) => {
 router.use('/static', express.static(path.join(__dirname,'..', 'views', 'dist')));
 
 router.get('/main', (req, res, next) => {
-    res.sendFile(path.join(__dirname,'..', 'views', 'dist', 'index.html'))
+    res.sendFile(path.join(__dirname,'..', 'views', 'dist', 'ticket.html'))
 })
 
 
