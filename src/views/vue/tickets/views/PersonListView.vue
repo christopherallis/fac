@@ -1,6 +1,6 @@
 <script setup>
 
-import { inject, ref, computed } from 'vue'
+import { inject, ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 import BaseView from '@/components/BaseView.vue'
@@ -21,12 +21,8 @@ const searchModeActive = ref(false)
 const searchTerms = ref("")
 
 function onRowClicked(personInfo) {
-    if (scanModeActive.value) {
-        // select person
-    } else {
-        state.personInfo = personInfo
-        router.push(`/person/${personInfo.id}`)
-    }
+    state.personInfo = personInfo
+    router.push(`/person/${personInfo.id}`)
 }
 
 const tableHeader = ref({
@@ -63,9 +59,12 @@ const computedPersonList = computed(() => {
         x.name = x.firstname+" "+x.lastname
         newList.push(x)
     }
-    console.log(newList)
+    newList.sort((a, b) =>  a.id-b.id)
     return newList
 })
+
+
+
 
 </script>
 
@@ -73,12 +72,11 @@ const computedPersonList = computed(() => {
     <BaseView title="Persons">
         <template #actions>
             <ActionButton icon="search" :onPress="() => searchModeActive = !searchModeActive" :active="searchModeActive" />
-            <ActionButton icon="qr_code_scanner" :onPress="() => scanModeActive = !scanModeActive" :active="scanModeActive" />
             <ActionButton icon="add" :onPress="() => eventbus.trigger('modal-open','create-person')" />
         </template>
         <template #content>
             <TextInput placeholder="Search..." v-model="searchTerms" v-show="searchModeActive" />
-            <ComputedTable :header="tableHeader" :tableData="computedPersonList" :search="searchTermsComputed" searchProp="name"  @rowClicked="onRowClicked" />
+            <ComputedTable :header="tableHeader" :data="computedPersonList" :search="searchTermsComputed" searchProp="name"  @rowClicked="onRowClicked" />
         </template>
     </BaseView>
 </template>

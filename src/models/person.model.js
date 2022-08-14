@@ -6,8 +6,8 @@ function createPersonTable() {
             id serial PRIMARY KEY,
             firstname text NOT NULL,
             lastname text NOT NULL,
-            email text,
-            phone text
+            uuid text NOT NULL,
+            agegroup int
         );
       `, (err, result) => {
         if (err) { 
@@ -16,8 +16,8 @@ function createPersonTable() {
     })
 }
 
-async function create(firstname, lastname) {
-    await db.query('INSERT INTO person (firstname, lastname) VALUES ($1, $2);', [firstname, lastname])
+async function create(firstname, lastname, uuid, agegroup) {
+    await db.query('INSERT INTO person (firstname, lastname, uuid, agegroup) VALUES ($1, $2, $3, $4);', [firstname, lastname, uuid, agegroup])
 }
 
 async function getAll() {
@@ -30,8 +30,8 @@ async function get(id) {
     return rows[0]
 }
 
-async function update(id, firstname, lastname) {
-    await db.query('UPDATE person SET firstname = $2,lastname = $3  WHERE id = $1;', [id, firstname, lastname])
+async function update(id, firstname, lastname, uuid, agegroup) {
+    await db.query('UPDATE person SET firstname = $2, lastname = $3, uuid = $4, agegroup = $5  WHERE id = $1;', [id, firstname, lastname, uuid, agegroup])
 }
 
 async function remove(id) {

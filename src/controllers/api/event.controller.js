@@ -19,7 +19,7 @@ router.get('/:id?',  async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     let eventName = req.body.eventName
     let desc = req.body.desc
-    eventModel.create(eventName, Date.now(), Date.now())
+    await eventModel.create(eventName, Date.now(), Date.now())
     res.sendStatus(200)
 })
 

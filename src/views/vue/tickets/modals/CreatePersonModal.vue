@@ -11,8 +11,8 @@ const eventbus = inject('eventbus')
 
 const firstname = ref('')
 const lastname = ref('')
-const email = ref('')
-const phone = ref('')
+const uuid = ref('')
+const agegroup = ref('')
 
 
 function createPerson() {
@@ -20,14 +20,14 @@ function createPerson() {
     axios.post("/api/person", {
         firstname: firstname.value,
         lastname: lastname.value,
-        email: email.value,
-        phone: phone.value
+        uuid: uuid.value,
+        agegroup: agegroup.value
     }).then((response) => {
         if (response.status == 200) {
             firstname.value = ""
             lastname.value = ""
-            email.value = ""
-            phone.value = ""
+            uuid.value = ""
+            agegroup.value = ""
             eventbus.trigger('modal-close','create-person')
             eventbus.trigger('list-update','person')
         }
@@ -39,10 +39,10 @@ function createPerson() {
 <template>
     <ModalView title="Add Person" modalName="create-person">
         <template #content>
-            <TextInput name="First Name*" id="first-name" v-model="firstname" />
-            <TextInput name="Last Name*" id="last-name" v-model="lastname" />
-            <TextInput name="Email" id="email" v-model="email" />
-            <TextInput name="Phone" id="phone" v-model="phone" />
+            <TextInput name="First Name*" id="firstname" v-model="firstname" />
+            <TextInput name="Last Name*" id="lastname" v-model="lastname" />
+            <TextInput name="QR Code" id="uuid" v-model="uuid" />
+            <TextInput name="Age Groups" id="agegroup" v-model="agegroup" />
         </template>
         <template #actions>
             <ModalButton text="Create" @click="createPerson" />
