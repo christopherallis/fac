@@ -1,13 +1,14 @@
 const express = require('express');
+//const ytLive = require('../lib/youtube-live')
 
+const router = require('express-promise-router')()
 
-const router = express.Router();
-
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
+    //await ytLive.getLive()
     res.render('partials/index');
 });
 
-router.get('/contact', (req, res, next) => {
+router.get('/contact', async (req, res, next) => {
     res.render('partials/contact');
 });
 

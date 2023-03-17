@@ -4,9 +4,6 @@ const path = require('path')
 
 const indexRouter = require("./src/controllers/index.controller")
 const aboutRouter = require("./src/controllers/about.controller")
-const webhookRouter = require("./src/controllers/webhook.controller")
-const dashboardRouter = require("./src/controllers/dashboard.controller")
-const apiRouter = require("./src/controllers/api.controller")
 
 const port = process.env.PORT || 3002
 
@@ -16,7 +13,6 @@ const isProduction = (process.env.NODE_ENV == "production")
 
 
 // MIDDLEWARE SETUP
-
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
@@ -64,17 +60,9 @@ if (isProduction) {
 // CONFIGURE STATIC
 app.use(express.static(path.join(__dirname, 'static')))
 
-app.use('/dashboard/static',express.static(path.join(__dirname, 'src', 'views', 'dists')))
-
-// LOAD DATABASES
-require('./src/models/loadModels')
-
 // CONFIGURE ROUTERS
 app.use('/', indexRouter)
 app.use('/about', aboutRouter)
-app.use('/webhook', webhookRouter)
-app.use('/dashboard', dashboardRouter)
-app.use('/api', apiRouter)
 
 // HANDLE 404
 app.use((req, res, next) => {

@@ -16,7 +16,7 @@ nav {
     .overlay {
         padding: 10px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         z-index: 5;
 
         a {
@@ -28,6 +28,8 @@ nav {
             font-family: 'Montserrat', sans-serif;
             font-weight: bold;
             font-size: 25px;
+            flex-grow: 1;
+            
             cursor: pointer;
         }
     }
@@ -61,6 +63,13 @@ nav {
 
 }
 
+#live {
+    background-color: red;
+    padding: 4px 10px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
 body.menu-open {
     header {
         height: 100vh;
@@ -87,6 +96,10 @@ body.menu-open {
         justify-content: space-between;
         align-items: center;
 
+        .overlay {
+            flex-grow: 1;
+        }
+
         .nav-items {
             position: initial;
             flex-direction: row;
@@ -94,7 +107,6 @@ body.menu-open {
             width: initial;
             height: 100%;
             opacity: 1;
-
             a {
                 padding: 0 20px;
                 border: none !important;
