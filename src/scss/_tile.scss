@@ -5,7 +5,7 @@
     background-size: cover;
 }
 
-.gradient, .gradient-round {
+.gradient, .gradient-round, .gradient-round2 {
     position: relative;
     &::after {
         display: block;
@@ -18,8 +18,12 @@
         content: '';
     }
 }
-.gradient-round::after {
+.gradient-round::after, .gradient-round2::after {
     border-radius: 10px;
+}
+.gradient-round2::after {
+    height: 30%;
+    background-image: linear-gradient(180deg, transparent, rgba(0,0,0,.5));
 }
 
 .tile-layout {

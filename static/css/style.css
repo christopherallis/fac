@@ -158,10 +158,10 @@ body.menu-open nav .nav-items {
   background-size: cover;
 }
 
-.gradient, .gradient-round {
+.gradient, .gradient-round, .gradient-round2 {
   position: relative;
 }
-.gradient::after, .gradient-round::after {
+.gradient::after, .gradient-round::after, .gradient-round2::after {
   display: block;
   position: absolute;
   background-image: linear-gradient(180deg, transparent, #000);
@@ -172,8 +172,13 @@ body.menu-open nav .nav-items {
   content: "";
 }
 
-.gradient-round::after {
+.gradient-round::after, .gradient-round2::after {
   border-radius: 10px;
+}
+
+.gradient-round2::after {
+  height: 30%;
+  background-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.5));
 }
 
 .tile-layout {

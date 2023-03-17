@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node .",
-    "dev": "nodemon ."
+    "dev": "nodemon .",
+    "sass": "sass src/scss:static/css --watch"
   },
   "keywords": [
     "Website"
