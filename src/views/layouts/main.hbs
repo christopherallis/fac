@@ -16,34 +16,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Roboto&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Roboto&family=DM+Serif+Display&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div class="overlay">
-                <a class="logo" href="/"><div>Friendly Arabic <span style="font-weight: normal;">Church</span></div></a>
-                <!--<a id="live" href="http://youtube.com/channel/UCXHwzWolojsUfQJLxKUb23g/live">&#9210; Live</a>-->
-                <span id="menu-toggle" class="material-icons">menu</span>
-            </div>
-            <div class="nav-items">
-                
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-            </div>
-        </nav>
-    </header>
-    <main>
-        {{{body}}}
-    </main>
-    <footer>
-        <div>Friendly Arabic Church, 1292 Whicker Rd., Kernersville, NC 27284</div>
-        <div>© 2023 Friendly Arabic Church. All Rights Reserved.</div>
-    </footer>
+    <div class="main-page">
+        <header>
+            <nav>
+                <div class="overlay">
+                    <a class="logo" href="/"><img src="/images/logowhite.svg"></a>
+                    <!--<a id="live" href="http://youtube.com/channel/UCXHwzWolojsUfQJLxKUb23g/live">&#9210; Live</a>-->
+                    <span id="menu-toggle" class="material-icons">menu</span>
+                </div>
+                <div class="nav-items">
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            {{{body}}}
+        </main>
+        <footer>
+            <div class="upper">Friendly Arabic Church, 1292 Whicker Rd., Kernersville, NC 27284</div>
+            <div class="lower">© 2023 Friendly Arabic Church. All Rights Reserved.</div>
+        </footer>
 
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="/js/main.js"></script>
 
