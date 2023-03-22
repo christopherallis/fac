@@ -17,17 +17,14 @@ header {
   height: 80px;
   background: rgb(0, 0, 0);
   background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
-  transition: background 0.3s ease;
-  transition: margin 0.5s ease 0.5s;
+  transition: all 0.5s ease;
 }
 header.hide {
   background: black;
   top: -80px;
-  transition: all 0.3s ease;
 }
 header.show {
   background: black;
-  transition: all 0.3s ease;
 }
 header nav {
   width: 100%;
@@ -245,6 +242,17 @@ main {
   transition: background-color 0.3s ease;
 }
 
+@media only screen and (min-width: 700px) {
+  .slideshow {
+    flex-direction: row-reverse;
+  }
+  .slideshow .slide-frame {
+    height: 30vw;
+    margin: 5%;
+    margin-left: 0;
+    flex-grow: 0.7;
+  }
+}
 footer {
   background-color: #191919;
   color: white;

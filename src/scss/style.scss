@@ -18,16 +18,13 @@ header {
     height: 80px;
     background: rgb(0,0,0);
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-    transition: background .3s ease;
-    transition: margin .5s ease .5s;
+    transition: all .5s ease;
     &.hide {
         background: black;
         top: -80px;
-        transition: all .3s ease;
     }
     &.show {
         background: black;
-        transition: all .3s ease;
     }
     nav {
         width: 100%;
@@ -253,6 +250,18 @@ main {
     &:hover {
         background-color: white;
         transition: background-color .3s ease;
+    }
+}
+
+@media only screen and (min-width: 700px) {
+    .slideshow {
+        flex-direction: row-reverse;
+        .slide-frame {
+            height: 30vw;
+            margin: 5%;
+            margin-left: 0;
+            flex-grow: .7;
+        }
     }
 }
 
