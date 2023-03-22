@@ -27,7 +27,6 @@ header {
     }
     &.show {
         background: black;
-        top: 0px;
         transition: all .3s ease;
     }
     nav {
@@ -52,6 +51,7 @@ header {
                 font-size: 40px;
                 padding: 20px;
                 color: white;
+                cursor: pointer;
             }
         }
         .nav-items {
@@ -63,6 +63,7 @@ header {
             top: 0;
             flex-direction: column;
             background-color: rgb(166, 166, 166);
+            transition: right .5s cubic-bezier(0.075, 0.82, 0.165, 1);
             a {
                 display: block;
                 color: white;
@@ -77,12 +78,15 @@ header {
 }
 
 .main-page {
-    transition: transform .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: margin .5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 body.menu-open {
     overflow: hidden;
     .main-page {
-        transform: translateX(-300px);
+        margin: 0 300px 0 -300px;
+    }
+    .nav-items {
+        right: 0;
     }
 }
 
