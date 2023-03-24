@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     {{!--<meta name="MobileOptimized" content="width" />
     <meta name="HandheldFriendly" content="true" />--}}
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=.9" /> 
     <meta name="description" content="Friendly Arabic Church Website" />
     <title>
         {{#if _fromPage.title}}
@@ -31,9 +31,27 @@
                     <span id="menu-toggle" class="material-icons">menu</span>
                 </div>
                 <div class="nav-items">
-                    <a href="/about">About</a>
-                    <a href="/ministry">Ministry</a>
-                    <a href="/contact">Contact</a>
+                    <div class="sublist">
+                        <div>About</div>
+                        <ul>
+                            
+                            <a href="#">Doctrinal Statements</a>
+                            <a href="#">Core Beliefs</a>
+                            <a href="#">History</a>
+                            <a href="#">Leadership</a>
+
+                        </ul>
+                    </div>
+                    <div class="sublist">
+                        <div>Ministry</div>
+                        <ul>
+                            <a href="#">Outreach</a>
+                            <a href="#">Children</a>
+                            <a href="#">Youth</a>
+                            <a href="#">College &amp; Career</a>
+                        </ul>
+                    </div>
+                    <a href="#">Contact</a>
                 </div>
             </nav>
         </header>

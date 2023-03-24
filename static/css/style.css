@@ -61,14 +61,49 @@ header nav .nav-items {
   flex-direction: column;
   background-color: rgb(166, 166, 166);
   transition: right 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+  overflow-y: auto;
 }
-header nav .nav-items a {
+header nav .nav-items a, header nav .nav-items .sublist > div {
   display: block;
   color: white;
   text-decoration: none;
-  padding: 20px;
+  padding: 10px 20px;
   font-size: 2em;
   font-family: "DM Serif Display", serif;
+}
+header nav .nav-items .sublist ul {
+  margin: 0;
+  padding: 0;
+  margin-left: 10px;
+  display: flex;
+  max-height: 0;
+  overflow: hidden;
+  flex-direction: column;
+  transition: max-height 0.5s ease;
+}
+header nav .nav-items .sublist ul a {
+  font-size: 1.2em;
+  padding: 5px 20px;
+}
+header nav .nav-items .sublist > div {
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header nav .nav-items .sublist > div::after {
+  font-family: "Font Awesome 6 Free";
+  content: "\f105";
+  font-size: 1em;
+  display: block;
+  transform-origin: center;
+  transition: transform 0.5s ease;
+}
+header nav .nav-items .sublist.show ul {
+  max-height: 200px;
+}
+header nav .nav-items .sublist.show > div::after {
+  transform: rotate(90deg);
 }
 
 .main-page {

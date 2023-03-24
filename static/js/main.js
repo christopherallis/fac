@@ -11,6 +11,13 @@ $(function() {
         }
     })
 
+    $(".sublist").each(function(i) {
+       let $this = $(this)
+        $this.find("div").click(function() {
+            $this.toggleClass("show")
+        })
+    })
+
 
     // auto hide of menu
     let $window = $(window)

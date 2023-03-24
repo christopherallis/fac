@@ -61,14 +61,55 @@ header {
             flex-direction: column;
             background-color: rgb(166, 166, 166);
             transition: right .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-            a {
+            overflow-y: auto;
+            a, .sublist > div {
                 display: block;
                 color: white;
                 text-decoration: none;
-                padding: 20px;
+                padding: 10px 20px;
                 font-size: 2em;
                 font-family: 'DM Serif Display', serif;
 
+            }
+            .sublist {
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    margin-left: 10px;
+                    display: flex;
+                    max-height: 0;
+                    overflow: hidden;
+                    flex-direction: column;
+                    transition: max-height .5s ease;
+                    a {
+                        font-size: 1.2em;
+                        padding: 5px 20px;
+                    }
+                }
+                > div {
+                    cursor: pointer;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    &::after {
+                        font-family: "Font Awesome 6 Free";
+                        content: "\f105";
+                        font-size: 1em;
+                        display: block;
+                        transform-origin: center;
+                        transition: transform .5s ease;
+                    }
+                }
+            }
+            .sublist.show {
+                ul {
+                    max-height: 200px;
+                    
+                    
+                }
+                > div::after {
+                    transform: rotate(90deg);
+                }
             }
         }
     }
