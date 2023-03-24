@@ -93,7 +93,7 @@ header nav .nav-items .sublist > div {
 }
 header nav .nav-items .sublist > div::after {
   font-family: "Font Awesome 6 Free";
-  content: "\f105";
+  content: "\f0da";
   font-size: 1em;
   display: block;
   transform-origin: center;
