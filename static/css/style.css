@@ -8,11 +8,11 @@ header {
   transition: all 0.5s ease;
 }
 header.hide {
-  background: black;
+  background: black !important;
   top: -80px;
 }
 header.show {
-  background: black;
+  background: black !important;
 }
 header nav {
   width: 100%;
@@ -99,6 +99,9 @@ header nav .nav-items .sublist.show > div::after {
 }
 .main-page.solid header {
   background-color: black;
+}
+.main-page.clear header {
+  background: linear-gradient(0, transparent 0%, transparent 100%);
 }
 
 body.menu-open {
@@ -285,9 +288,9 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 20vh;
+  min-height: 250px;
   padding-top: 80px;
-  background-color: var(--main-color);
+  background-color: var(--accent-color);
   color: white;
 }
 .page-header h1 {
