@@ -1,6 +1,12 @@
+@import "_nav.scss";
+
 :root {
-    --accent-color: #C59031;
+    --main-color: #C59031;
+    --accent-color: #537d8d;
+    --title-font: 'Cardo', serif;
 }
+
+
 
 html, body {
     margin: 0;
@@ -11,122 +17,6 @@ html, body {
 
 }
 
-header {
-    position: fixed;
-    z-index: 2;
-    width: 100%;
-    height: 80px;
-    background: rgb(0,0,0);
-    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-    transition: all .5s ease;
-    &.hide {
-        background: black;
-        top: -80px;
-    }
-    &.show {
-        background: black;
-    }
-    nav {
-        width: 100%;
-        height: 100%;
-        .overlay {
-            height: 100%;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            .logo {
-                flex-grow: 1;
-                height: 100%;
-                padding: 5px;
-                box-sizing: border-box;
-                img {
-                    height: 100%;
-                    
-                }
-            }
-            #menu-toggle {
-                font-size: 40px;
-                padding: 20px;
-                color: white;
-                cursor: pointer;
-            }
-        }
-        .nav-items {
-            display: flex;
-            position: fixed;
-            width: 300px;
-            right: -300px;
-            height: 100vh;
-            top: 0;
-            flex-direction: column;
-            background-color: rgb(166, 166, 166);
-            transition: right .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-            overflow-y: auto;
-            a, .sublist > div {
-                display: block;
-                color: white;
-                text-decoration: none;
-                padding: 10px 20px;
-                font-size: 2em;
-                font-family: 'DM Serif Display', serif;
-
-            }
-            .sublist {
-                ul {
-                    margin: 0;
-                    padding: 0;
-                    margin-left: 10px;
-                    display: flex;
-                    max-height: 0;
-                    overflow: hidden;
-                    flex-direction: column;
-                    transition: max-height .5s ease;
-                    a {
-                        font-size: 1.2em;
-                        padding: 5px 20px;
-                    }
-                }
-                > div {
-                    cursor: pointer;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    &::after {
-                        font-family: "Font Awesome 6 Free";
-                        content: "\f0da";
-                        font-size: 1em;
-                        display: block;
-                        transform-origin: center;
-                        transition: transform .5s ease;
-                    }
-                }
-            }
-            .sublist.show {
-                ul {
-                    max-height: 200px;
-                    
-                    
-                }
-                > div::after {
-                    transform: rotate(90deg);
-                }
-            }
-        }
-    }
-}
-
-.main-page {
-    transition: margin .5s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-body.menu-open {
-    overflow: hidden;
-    .main-page {
-        margin: 0 300px 0 -300px;
-    }
-    .nav-items {
-        right: 0;
-    }
-}
 
 main {
     background-color: white;
@@ -142,8 +32,8 @@ main {
         //margin-top: 300px;
         font-size: 2.8em;
         font-weight: bold;
-        //font-family: "Montserrat", sans-serif;
-        font-family: 'DM Serif Display', serif;
+        font-family: 'Cardo', serif;
+        //font-family: var(--title-font);
         color: white;
         //text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     }
@@ -158,8 +48,7 @@ main {
 }
 
 .bg1 {
-    background-color: var(--accent-color);
-    //background-color: #3166C5;
+    background-color: var(--main-color);
     color: white;
 }
 
@@ -177,8 +66,7 @@ main {
             font-size: 1.8em;
         }
         .title {
-            //font-family: "Montserrat", sans-serif;
-            font-family: 'DM Serif Display', serif;
+            font-family: 'Cardo', serif;
             font-weight: bold;
             font-size: 2em;
         }
@@ -187,7 +75,7 @@ main {
         }
         .button {
             background-color: rgba(255, 255, 255, 0.8);
-            color: var(--accent-color);
+            color: var(--main-color);
             width: 80px;
             margin: 0 auto;
             margin-top: 10px;
@@ -262,7 +150,7 @@ main {
             .title {
                 font-size: 1.8em;
                 font-weight: bold;
-                font-family: 'DM Serif Display', serif;
+                font-family: var(--title-font);
                 margin-bottom: 5px;
             }
             .date {
@@ -270,7 +158,7 @@ main {
                 color:rgb(149, 149, 149);
             }
             .button {
-                background: var(--accent-color);
+                background: var(--main-color);
                 color: white;
             }
         }
@@ -282,7 +170,7 @@ main {
 .button {
     background-color: white;
     padding: 10px;
-    color: var(--accent-color);
+    color: var(--main-color);
     display: inline-block;
     width: fit-content;
     border-radius: 2px;
@@ -293,7 +181,57 @@ main {
     }
 }
 
+.page-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    padding-top: 80px;
+    background-color: var(--main-color);
+    color: white;
+    h1 {
+        font-size: 3em;
+        font-weight: bold;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+}
+
+.split {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    padding: 20px;
+    gap: 20px;
+    > div {
+        width: 100%;
+        flex-grow: 1;
+        div {
+            margin-bottom: 20px;
+        }
+    }
+    .map {
+        width: 100%;
+        height: 80vw;
+    }
+}
+
 @media only screen and (min-width: 700px) {
+    .split {
+        flex-direction: row;
+        > div {
+            width: initial;
+        }
+        .map {
+            width: 100%;
+            height: 400px;
+            max-width: 600px;
+        }
+    }
     .slideshow {
         flex-direction: row-reverse;
         .slide-frame {

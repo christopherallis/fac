@@ -27,7 +27,6 @@ $(function() {
     function updateMenuBar() {
         let nh = $window.scrollTop()
         if (nh > 100) {
-            
             if (nh-oh > 0) {
                 oh = nh
                 $nav.addClass("hide")

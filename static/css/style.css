@@ -1,15 +1,3 @@
-:root {
-  --accent-color: #C59031;
-}
-
-html, body {
-  margin: 0;
-  padding: 0;
-  background-color: black;
-  font-size: 18px;
-  font-family: "Roboto", sans-serif;
-}
-
 header {
   position: fixed;
   z-index: 2;
@@ -59,7 +47,7 @@ header nav .nav-items {
   height: 100vh;
   top: 0;
   flex-direction: column;
-  background-color: rgb(166, 166, 166);
+  background-color: var(--accent-color);
   transition: right 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
   overflow-y: auto;
 }
@@ -69,7 +57,7 @@ header nav .nav-items a, header nav .nav-items .sublist > div {
   text-decoration: none;
   padding: 10px 20px;
   font-size: 2em;
-  font-family: "DM Serif Display", serif;
+  font-family: var(--title-font);
 }
 header nav .nav-items .sublist ul {
   margin: 0;
@@ -94,7 +82,7 @@ header nav .nav-items .sublist > div {
 header nav .nav-items .sublist > div::after {
   font-family: "Font Awesome 6 Free";
   content: "\f0da";
-  font-size: 1em;
+  font-size: 0.7em;
   display: block;
   transform-origin: center;
   transition: transform 0.5s ease;
@@ -109,6 +97,9 @@ header nav .nav-items .sublist.show > div::after {
 .main-page {
   transition: margin 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+.main-page.solid header {
+  background-color: black;
+}
 
 body.menu-open {
   overflow: hidden;
@@ -118,6 +109,20 @@ body.menu-open .main-page {
 }
 body.menu-open .nav-items {
   right: 0;
+}
+
+:root {
+  --main-color: #C59031;
+  --accent-color: #537d8d;
+  --title-font: "Cardo", serif;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
 }
 
 main {
@@ -133,7 +138,7 @@ main {
   text-align: center;
   font-size: 2.8em;
   font-weight: bold;
-  font-family: "DM Serif Display", serif;
+  font-family: "Cardo", serif;
   color: white;
 }
 
@@ -146,7 +151,7 @@ main {
 }
 
 .bg1 {
-  background-color: var(--accent-color);
+  background-color: var(--main-color);
   color: white;
 }
 
@@ -166,7 +171,7 @@ main {
   font-size: 1.8em;
 }
 .tiles .tile .title {
-  font-family: "DM Serif Display", serif;
+  font-family: "Cardo", serif;
   font-weight: bold;
   font-size: 2em;
 }
@@ -175,7 +180,7 @@ main {
 }
 .tiles .tile .button {
   background-color: rgba(255, 255, 255, 0.8);
-  color: var(--accent-color);
+  color: var(--main-color);
   width: 80px;
   margin: 0 auto;
   margin-top: 10px;
@@ -250,7 +255,7 @@ main {
 .slideshow .content .slide-info .title {
   font-size: 1.8em;
   font-weight: bold;
-  font-family: "DM Serif Display", serif;
+  font-family: var(--title-font);
   margin-bottom: 5px;
 }
 .slideshow .content .slide-info .date {
@@ -258,14 +263,14 @@ main {
   color: rgb(149, 149, 149);
 }
 .slideshow .content .slide-info .button {
-  background: var(--accent-color);
+  background: var(--main-color);
   color: white;
 }
 
 .button {
   background-color: white;
   padding: 10px;
-  color: var(--accent-color);
+  color: var(--main-color);
   display: inline-block;
   width: fit-content;
   border-radius: 2px;
@@ -276,7 +281,57 @@ main {
   transition: background-color 0.3s ease;
 }
 
+.page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 20vh;
+  padding-top: 80px;
+  background-color: var(--main-color);
+  color: white;
+}
+.page-header h1 {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+.split {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+  padding: 20px;
+  gap: 20px;
+}
+.split > div {
+  width: 100%;
+  flex-grow: 1;
+}
+.split > div div {
+  margin-bottom: 20px;
+}
+.split .map {
+  width: 100%;
+  height: 80vw;
+}
+
 @media only screen and (min-width: 700px) {
+  .split {
+    flex-direction: row;
+  }
+  .split > div {
+    width: initial;
+  }
+  .split .map {
+    width: 100%;
+    height: 400px;
+    max-width: 600px;
+  }
   .slideshow {
     flex-direction: row-reverse;
   }
