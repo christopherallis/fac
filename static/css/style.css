@@ -138,7 +138,7 @@ main {
   text-align: center;
   font-size: 2.8em;
   font-weight: bold;
-  font-family: "Cardo", serif;
+  font-family: var(--title-font);
   color: white;
 }
 
@@ -171,7 +171,7 @@ main {
   font-size: 1.8em;
 }
 .tiles .tile .title {
-  font-family: "Cardo", serif;
+  font-family: var(--title-font);
   font-weight: bold;
   font-size: 2em;
 }
@@ -293,6 +293,10 @@ main {
 .page-header h1 {
   font-size: 3em;
   font-weight: bold;
+}
+
+h1 {
+  font-family: var(--title-font);
 }
 
 a {
