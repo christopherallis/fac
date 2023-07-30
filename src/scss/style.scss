@@ -3,10 +3,9 @@
 :root {
     --main-color: #C59031;
     --accent-color: #537d8d;
+    --top-color: #EAEAEA;
     --title-font: 'Cardo', serif;
 }
-
-
 
 html, body {
     margin: 0;
@@ -17,9 +16,16 @@ html, body {
 
 }
 
+body {
+    min-height: 100vh;
+}
 
 main {
     background-color: white;
+}
+
+main {
+    min-height: calc( 100vh - 80px - 62px );
 }
 
 .hero {
@@ -221,6 +227,25 @@ a {
     .map {
         width: 100%;
         height: 80vw;
+    }
+}
+
+.text-content {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.verse-list {
+    display: flex;
+    flex-wrap: wrap;
+    a {
+        background-color: var(--main-color);
+        color: white;
+        border-radius: 20px;
+        padding: 5px 10px;
+        margin-right: 5px;
+        margin-bottom: 5px;
+        font-size: .8em;
     }
 }
 

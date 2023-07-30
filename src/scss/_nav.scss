@@ -46,7 +46,7 @@ header {
             height: 100vh;
             top: 0;
             flex-direction: column;
-            background-color: var(--accent-color);//#000045;//rgb(166, 166, 166);
+            background-color: var(--main-color);//#000045;//rgb(166, 166, 166);
             transition: right .5s cubic-bezier(0.075, 0.82, 0.165, 1);
             overflow-y: auto;
             a, .sublist > div {

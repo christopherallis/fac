@@ -42,6 +42,7 @@ $(function() {
         }
     }
     $window.scroll(updateMenuBar)
+    updateMenuBar()
 
     // slideshow
     let allSlides = $(".slideshow .slide-image")
