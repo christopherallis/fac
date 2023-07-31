@@ -28,7 +28,8 @@ header {
                 box-sizing: border-box;
                 img {
                     height: 100%;
-                    
+                    box-sizing: border-box;
+                    padding: 10px;
                 }
             }
             #menu-toggle {
@@ -101,6 +102,7 @@ header {
         }
     }
 }
+
 
 .main-page {
     transition: margin .5s cubic-bezier(0.075, 0.82, 0.165, 1);

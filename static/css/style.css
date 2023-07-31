@@ -32,6 +32,8 @@ header nav .overlay .logo {
 }
 header nav .overlay .logo img {
   height: 100%;
+  box-sizing: border-box;
+  padding: 10px;
 }
 header nav .overlay #menu-toggle {
   font-size: 40px;
