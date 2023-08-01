@@ -16,6 +16,24 @@ const isProduction = (process.env.NODE_ENV == "production")
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+// REDIRECT FROM FRIENDLYARABIC.CHURCH TO BCCLEMMONS.COM
+app.use((req, res, next) => {
+    if (req.hostname == "friendlyarabic.church") {
+        res.redirect(301, `https://bcclemmons.com${req.path}`)
+    } else {
+        next()
+    }
+})
+
+// ENFORCE HTTPS
+app.use((req, res, next) => {
+    if ("https" !== req.headers["x-forwarded-proto"] && "production" === process.env.NODE_ENV) {
+        res.redirect("https://" + req.hostname + req.url)
+    } else {
+        next()
+    }
+})
+
 // CONFIGURE HBS
 app.engine('hbs', exphbs({
     defaultLayout: 'main',
@@ -31,23 +49,12 @@ app.engine('hbs', exphbs({
 app.set('views', path.join(__dirname, 'src', 'views'))
 app.set('view engine', 'hbs')
 
-// ENFORCE HTTPS
-app.use((req, res, next) => {
-    if ("https" !== req.headers["x-forwarded-proto"] && "production" === process.env.NODE_ENV) {
-        res.redirect("https://" + req.hostname + req.url);
-    } else {
-        next()
-    }
-})
 
-
-// Redirect to HTTPS
 if (isProduction) {
-    //console.log("Enabled HTTPS Redirect")
-    //app.use(enforce.HTTPS({ trustProtoHeader: true }))
-    //app.set('trust proxy', 1)
+    
 } else {
     // add CORS header for developement only
+    // TODO do I need this anymore??
     console.log("Add COR header")
     app.use((req, res, next) => {
         res.header("Access-Control-Allow-Origin", "http://localhost:8080")

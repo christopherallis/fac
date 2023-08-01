@@ -7,13 +7,19 @@ router.get('/', (req, res, next) => {
     res.render('partials/about');
 });
 
-router.get('/services', (req, res, next) => {
-    res.render('partials/services');
-});
+router.get('/sof', (req, res, next) => {
+    res.render('partials/about/sof');
+})
 
-router.get('/privacy-policy', (req, res, next) => {
-    res.render('partials/privacy');
-});
+router.get('/history', (req, res, next) => {
+    res.render('partials/about/history');
+})
+
+router.get('/leadership', (req, res, next) => {
+    res.render('partials/about/leadership');
+})
+
+
 
 
 

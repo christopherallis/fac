@@ -5,45 +5,65 @@
     {{!--<meta name="MobileOptimized" content="width" />
     <meta name="HandheldFriendly" content="true" />--}}
     <meta name="viewport" content="width=device-width, initial-scale=.9" /> 
-    <meta name="description" content="Friendly Arabic Church Website" />
+    <meta name="description" content="Bible Church of Clemmons Website" />
     <title>
         {{#if _fromPage.title}}
-            {{_fromPage.title}} - FAC
+            {{_fromPage.title}} - BCC
         {{else}}
-            FAC
+            BCC
         {{/if}}
     </title>
+    <link rel="icon" href="/images/favicon.svg">
+    <link rel="mask-icon" href="/images/favicon.svg" color="#C59031">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&family=Roboto&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cardo:wght@400;700&family=DM+Serif+Display&family=Raleway:wght@400;800&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <header>
-        <nav>
-            <div class="overlay">
-                <a class="logo" href="/"><div>Friendly Arabic <span style="font-weight: normal;">Church</span></div></a>
-                <!--<a id="live" href="http://youtube.com/channel/UCXHwzWolojsUfQJLxKUb23g/live">&#9210; Live</a>-->
-                <span id="menu-toggle" class="material-icons">menu</span>
-            </div>
-            <div class="nav-items">
-                
-                <a href="/about">About</a>
-                <a href="/contact">Contact</a>
-            </div>
-        </nav>
-    </header>
-    <main>
-        {{{body}}}
-    </main>
-    <footer>
-        <div>Friendly Arabic Church, 1292 Whicker Rd., Kernersville, NC 27284</div>
-        <div>© 2023 Friendly Arabic Church. All Rights Reserved.</div>
-    </footer>
+    <div class="main-page {{_fromPage.navstyle}}">
+        <header>
+            <nav>
+                <div class="overlay">
+                    <a class="logo" href="/"><img src="/images/logo-new.svg"></a>
+                    <!--<a id="live" href="http://youtube.com/channel/UCXHwzWolojsUfQJLxKUb23g/live">&#9210; Live</a>-->
+                    <span id="menu-toggle" class="material-icons">menu</span>
+                </div>
+                <div class="nav-items">
+                    <div class="sublist">
+                        <div>Learn</div>
+                        <ul>
+                            <a href="/about/sof">Statement of Faith</a>
+                            <a href="/about/history">History</a>
+                            <a href="/about/leadership">Leadership</a>
+                        </ul>
+                    </div>
+                    {{!--<div class="sublist">
+                        <div>Ministry</div>
+                        <ul>
+                            <a href="#">Arabic</a>
+                            <a href="#">Outreach</a>
+                            <a href="#">Children</a>
+                            <a href="#">Youth</a>
+                        </ul>
+                    </div>--}}
+                    <a href="/ministry">Ministry</a>
+                    <a href="/contact">Contact</a>
+                </div>
+            </nav>
+        </header>
+        <main>
+            {{{body}}}
+        </main>
+        <footer>
+            <div class="upper">Bible Church of Clemmons, 2570 Harper Rd, Clemmons, NC 27012</div>
+            <div class="lower">© 2023 Bible Church of Clemmons. All Rights Reserved.</div>
+        </footer>
 
+    </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="/js/main.js"></script>
 
