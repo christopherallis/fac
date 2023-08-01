@@ -315,11 +315,15 @@ main {
 }
 .page-header h1 {
   font-size: 3em;
+  font-weight: normal;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   text-align: center;
 }
 
 h1 {
   font-family: var(--title-font);
+  font-weight: normal;
 }
 
 a {

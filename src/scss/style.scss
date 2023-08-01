@@ -211,6 +211,9 @@ main {
     color: white;
     h1 {
         font-size: 3em;
+        font-weight: normal;
+        letter-spacing: .1em;
+        text-transform: uppercase;
         //font-weight: bold;
         text-align: center;
     }
@@ -218,6 +221,7 @@ main {
 
 h1 {
     font-family: var(--title-font);
+    font-weight: normal;
 }
 
 a {
