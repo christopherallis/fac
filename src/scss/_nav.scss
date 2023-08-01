@@ -7,11 +7,11 @@ header {
     background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
     transition: all .5s ease;
     &.hide {
-        background: black !important;
+        background: var(--accent-color) !important;
         top: -80px;
     }
     &.show {
-        background: black !important;
+        background: var(--accent-color) !important;
     }
     nav {
         width: 100%;

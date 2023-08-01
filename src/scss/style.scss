@@ -1,13 +1,19 @@
-@import "_nav.scss";
 
 :root {
     --main-color: #C59031;
-    --accent-color: #537d8d;
+    //--accent-color: #537d8d;
+    //--accent-color: #003459;
+    //--accent-color: #1C2541;
+   // --accent-color: #16324F;
+   --accent-color: #2E2836;
     --top-color: #EAEAEA;
     //--title-font: 'Cardo', serif;
     --title-font: 'Raleway', sans-serif;
 
 }
+
+@import "_nav.scss";
+
 
 html, body {
     margin: 0;
@@ -293,7 +299,7 @@ a {
 }
 
 footer {
-    background-color: #191919;
+    background-color: black;
     color: white;
     text-align: center;
     padding: 50px;

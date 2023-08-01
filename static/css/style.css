@@ -1,3 +1,10 @@
+:root {
+  --main-color: #C59031;
+  --accent-color: #2E2836;
+  --top-color: #EAEAEA;
+  --title-font: "Raleway", sans-serif;
+}
+
 header {
   position: fixed;
   z-index: 2;
@@ -8,11 +15,11 @@ header {
   transition: all 0.5s ease;
 }
 header.hide {
-  background: black !important;
+  background: var(--accent-color) !important;
   top: -80px;
 }
 header.show {
-  background: black !important;
+  background: var(--accent-color) !important;
 }
 header nav {
   width: 100%;
@@ -114,13 +121,6 @@ body.menu-open .main-page {
 }
 body.menu-open .nav-items {
   right: 0;
-}
-
-:root {
-  --main-color: #C59031;
-  --accent-color: #537d8d;
-  --top-color: #EAEAEA;
-  --title-font: "Raleway", sans-serif;
 }
 
 html, body {
@@ -395,7 +395,7 @@ a {
   }
 }
 footer {
-  background-color: #191919;
+  background-color: black;
   color: white;
   text-align: center;
   padding: 50px;
