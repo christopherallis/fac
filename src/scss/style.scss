@@ -269,11 +269,11 @@ a {
         }
     }
     .slideshow {
-        flex-direction: row-reverse;
+        flex-direction: row;
         .slide-frame {
             height: 30vw;
             margin: 5%;
-            margin-left: 0;
+            margin-right: 0;
             flex-grow: .7;
         }
     }

@@ -377,12 +377,12 @@ a {
     max-width: 600px;
   }
   .slideshow {
-    flex-direction: row-reverse;
+    flex-direction: row;
   }
   .slideshow .slide-frame {
     height: 30vw;
     margin: 5%;
-    margin-left: 0;
+    margin-right: 0;
     flex-grow: 0.7;
   }
 }
