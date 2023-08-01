@@ -194,8 +194,13 @@ main {
   font-weight: bold;
   font-size: 2em;
 }
+.tiles .tile .title i {
+  font-size: 0.8em;
+  padding: 10px;
+}
 .tiles .tile .body {
   font-size: 1.5;
+  margin: 20px 0;
 }
 .tiles .tile .button {
   background-color: rgba(255, 255, 255, 0.8);
@@ -212,13 +217,16 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 20px;
 }
 .slideshow .slide-frame {
   position: relative;
-  margin: 20px;
-  margin-bottom: 10px;
-  width: 90vw;
+  /*margin: 20px;
+   margin-bottom: 10px;*/
+  width: 100%;
   height: 60vw;
+  margin-bottom: 20px;
 }
 .slideshow .slide-frame .slides {
   width: 100%;
@@ -258,7 +266,6 @@ main {
 }
 .slideshow .content {
   width: 100%;
-  padding: 0 5%;
   box-sizing: border-box;
 }
 .slideshow .content .slide-info {
@@ -381,9 +388,10 @@ a {
   }
   .slideshow .slide-frame {
     height: 30vw;
-    margin: 5%;
-    margin-right: 0;
-    flex-grow: 0.7;
+    margin: 0;
+  }
+  .slideshow .content {
+    padding: 30px;
   }
 }
 footer {
