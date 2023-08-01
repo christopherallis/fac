@@ -39,7 +39,9 @@ main {
         //padding: 0 100px;
         //margin-top: 300px;
         font-size: 2.8em;
-        font-weight: bold;
+        //font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: .1em;
         
         font-family: var(--title-font);
         color: white;
@@ -76,15 +78,14 @@ main {
         width: 300px;
         .icon {
             font-size: 1.8em;
+            margin-bottom: 20px;
         }
         .title {
             font-family: var(--title-font);
-            font-weight: bold;
+            //font-weight: bold;
             font-size: 2em;
-            i {
-                font-size: .8em;
-                padding: 10px;
-            }
+            //text-transform: uppercase;
+            letter-spacing: .1em;
         }
         .body {
             font-size: 1.5;
@@ -168,7 +169,7 @@ main {
             }
             .title {
                 font-size: 1.8em;
-                font-weight: bold;
+                //font-weight: bold;
                 font-family: var(--title-font);
                 margin-bottom: 5px;
             }

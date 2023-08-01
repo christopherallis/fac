@@ -151,7 +151,8 @@ main {
 .hero .hero-text {
   text-align: center;
   font-size: 2.8em;
-  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   font-family: var(--title-font);
   color: white;
 }
@@ -188,15 +189,12 @@ main {
 }
 .tiles .tile .icon {
   font-size: 1.8em;
+  margin-bottom: 20px;
 }
 .tiles .tile .title {
   font-family: var(--title-font);
-  font-weight: bold;
   font-size: 2em;
-}
-.tiles .tile .title i {
-  font-size: 0.8em;
-  padding: 10px;
+  letter-spacing: 0.1em;
 }
 .tiles .tile .body {
   font-size: 1.5;
@@ -280,7 +278,6 @@ main {
 }
 .slideshow .content .slide-info .title {
   font-size: 1.8em;
-  font-weight: bold;
   font-family: var(--title-font);
   margin-bottom: 5px;
 }
