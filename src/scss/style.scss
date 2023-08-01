@@ -44,7 +44,7 @@ main {
         text-align: center;
         //padding: 0 100px;
         //margin-top: 300px;
-        font-size: 2.8em;
+        font-size: 2.3em;
         //font-weight: bold;
         text-transform: uppercase;
         letter-spacing: .1em;
@@ -295,6 +295,9 @@ a {
         .content {
             padding: 30px;
         }
+    }
+    .hero-text {
+        font-size: 2.8em !important;
     }
 }
 

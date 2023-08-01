@@ -150,7 +150,7 @@ main {
 }
 .hero .hero-text {
   text-align: center;
-  font-size: 2.8em;
+  font-size: 2.3em;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-family: var(--title-font);
@@ -392,6 +392,9 @@ a {
   }
   .slideshow .content {
     padding: 30px;
+  }
+  .hero-text {
+    font-size: 2.8em !important;
   }
 }
 footer {
