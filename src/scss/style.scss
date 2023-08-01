@@ -4,7 +4,9 @@
     --main-color: #C59031;
     --accent-color: #537d8d;
     --top-color: #EAEAEA;
-    --title-font: 'Cardo', serif;
+    //--title-font: 'Cardo', serif;
+    --title-font: 'Raleway', sans-serif;
+
 }
 
 html, body {
@@ -45,12 +47,16 @@ main {
     }
 }
 
+.hero-loading {
+    background-color: black !important;
+}
 .hero-full {
     height: 100vh;
     background-size: cover;
     background-position: center;
-    background-color: rgb(166, 166, 166);
+    background-color: rgba(0, 0, 0, .35);
     background-blend-mode: multiply;
+    transition: background-color 3s .1s ease;
 }
 
 .bg1 {

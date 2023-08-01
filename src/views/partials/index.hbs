@@ -1,8 +1,18 @@
 {{#section 'title'}}Home{{/section}}
 
-<div class="hero hero-full" style="background-image: url(/images/conference-new.jpg)">
+<div id="bigimage" class="hero hero-full hero-loading">
     <div class="hero-text">Love God, Love Others, Make Disciples</div>
 </div>
+
+<script>
+    var o = document.getElementById("bigimage")
+    var i = new Image()
+    i.onload = function(e) {
+        o.style.backgroundImage = "url(/images/conference-new.jpg)"
+        o.classList.remove("hero-loading")
+    }
+    i.src = "/images/conference-new.jpg"
+</script>
 
 <section class="tiles bg1">
     <div class="tile">
