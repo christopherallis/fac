@@ -95,6 +95,7 @@ header nav .nav-items .sublist > div::after {
   display: block;
   transform-origin: center;
   transition: transform 0.5s ease;
+  font-weight: 900;
 }
 header nav .nav-items .sublist.show ul {
   max-height: 200px;
