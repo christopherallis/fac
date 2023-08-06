@@ -73,8 +73,8 @@ app.use('/about', aboutRouter)
 
 // HANDLE 404
 app.use((req, res, next) => {
-    // TODO 404 error
-    res.sendStatus(404)
+    
+    res.status(404).render('partials/404')
 })
 
 // HANDLE ERRORS
