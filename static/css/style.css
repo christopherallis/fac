@@ -329,7 +329,7 @@ h1 {
 
 a {
   text-decoration: none;
-  color: var(--accent-color);
+  color: var(--main-color);
 }
 
 .split {
