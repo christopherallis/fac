@@ -1,6 +1,6 @@
 {{#section 'title'}}Home{{/section}}
 
-<div id="bigimage" class="hero hero-full hero-loading">
+<div id="bigimage" class="hero page-full hero-loading">
     <div class="hero-text">Love&nbsp;God, Love&nbsp;Others, Make&nbsp;Disciples</div>
 </div>
 
@@ -10,9 +10,20 @@
     i.onload = function(e) {
         o.style.backgroundImage = "url(/images/conference-new.jpg)"
         o.classList.remove("hero-loading")
+        o.classList.add("scroll-suggest")
     }
     i.src = "/images/conference-new.jpg"
 </script>
+
+<div class="page page-half">
+    <div class="page-image-container">
+        <div class="page-image animation-pan" style="background-image: url(/images/festival-small.jpg)"></div>
+    </div>
+    <div class="title">Middle Eastern Christian Festival</div>
+    <div class="date">April 27th - 28th</div>
+    <div class="body">Our yearly festival is approaching!</div>
+    <a class="button" href="/events/communityday">Learn More <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+</div>
 
 <section class="tiles bg1">
     <div class="tile">
@@ -34,12 +45,12 @@
         <a class="button" target="__blank" href="https://youtube.com/@BibleChurchofClemmons">More</a>
     </div>
 </section>
-
+{{!--
 <section class="slideshow">
     <div class="slide-frame">
         
         <div class="slides">
-            <div class="slide-image visible" style="background-image: url(/images/pray.jpg)"></div>
+            <div class="slide-image visible" style="background-image: url(/images/festival-small.jpg)"></div>
             <!--<div class="slide-image" style="background-image: url(/images/conference.jpg)"></div>-->
         </div>
         <i class="btn btn-left fa-solid fa-chevron-left"></i>
@@ -47,10 +58,10 @@
     </div>
     <div class="content">
         <div class="slide-info visible">
-            <div class="title">No Events</div>
-            <div class="date"></div>
-            <div class="body">Check back soon!</div>
-            {{!--<a class="button" href="/events/communityday">Learn More</a>--}}
+            <div class="title">Middle Eastern Christian Festival</div>
+            <div class="date">April 27th - 28th</div>
+            <div class="body">Our yearly festival is approaching!</div>
+            <a class="button" href="/events/communityday">Learn More <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
         </div>
         {{!--<div class="slide-info">
             <div class="title">Random Test Slide</div>
@@ -60,3 +71,4 @@
         </div>--}}
     </div>
 </section>
+--}}
