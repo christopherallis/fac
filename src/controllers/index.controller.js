@@ -20,4 +20,9 @@ router.get('/events/communityday', async (req, res, next) => {
     res.render('partials/events/communityday23');
 })
 
+router.get('/events/festival/', async (req, res, next) => {
+    res.render('partials/events/festival24');
+
+})
+
 module.exports = router

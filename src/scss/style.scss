@@ -126,8 +126,38 @@ main {
         width: 100%;
         height: 100%;
     }
+    .animation-pan {
+        animation: pan1 10s ease-out 0s forwards;
+        opacity: 1;
+    }
+    .hide {
+        opacity: 0;
+        transition: opacity 1s 0s ease;
+        z-index: 1;
+    }
 }
 
+.auto-slideshow {
+    .descriptions {
+        z-index: 2;
+        padding: 20px;
+        background-image: linear-gradient(transparent,rgba(0,0,0,.3), rgba(0,0,0,.9));
+        position: relative; 
+        height: 4em;
+        div {
+            font-size: 1.5em;
+            opacity: 1;
+            position: absolute;
+            bottom: 1em;
+            transition: opacity .2s 0s ease-in;
+        }
+        .hide {
+            opacity: 0;
+            transition: opacity .1s 0s ease-out;
+            z-index: 1;
+        }
+    }
+}
 
 .bg1 {
     background-color: var(--main-color);
@@ -395,9 +425,7 @@ footer {
     to {opacity: 1;}
 }
 
-.animation-pan {
-    animation: pan1 20s ease-in 0s forwards;
-}
+
 @keyframes pan1 {
     from { transform: scale(1);}
     to { transform: scale(1.3);}

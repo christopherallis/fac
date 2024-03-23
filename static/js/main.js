@@ -44,6 +44,52 @@ $(function() {
     $window.scroll(updateMenuBar)
     updateMenuBar()
 
+
+    // pages
+    let allAutoSlides = $(".page-image-container .page-image")
+    let allDescriptions = $(".auto-slideshow .descriptions div")
+    let autoIndex = 0
+    function changeAutoTo(ind) {
+        console.log('okay we changing')
+        let l = allAutoSlides.length-1
+        autoIndex = ind < 0 ? l : (ind > l ? 0 : ind)
+        console.log(autoIndex)
+        for (let i = 0; i < allAutoSlides.length; i++) {
+            let obj = $(allAutoSlides[i])
+            if (i === autoIndex) {
+                obj.removeClass("hide")
+                obj.addClass("animation-pan")
+
+            } else {
+                obj.addClass("hide")
+                setTimeout(()=>obj.removeClass("animation-pan"), 2000)
+            }
+            if (allDescriptions !== null) {
+                let obj = $(allDescriptions[i])
+                if (i === autoIndex) {
+                    obj.removeClass("hide")
+    
+                } else {
+                    obj.addClass("hide")
+                }
+            }
+        }
+        
+        
+    }
+
+    let imageContainer = document.querySelector('.page-image-container')
+    let observer = new IntersectionObserver((entries) => {
+        entries.forEach(({intersectionRatio}) => {
+            if (intersectionRatio >= .5) {
+                setInterval(()=>changeAutoTo(autoIndex + 1), 7000)
+                observer.unobserve(imageContainer)
+            }
+        })
+    }, {threshold: .5})
+    observer.observe(imageContainer)
+
+
     // slideshow
     let allSlides = $(".slideshow .slide-image")
     let allSlideContent = $(".slideshow .slide-info")
