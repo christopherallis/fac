@@ -315,9 +315,11 @@ main {
         //font-weight: bold;
         text-align: center;
     }
+    
+
 }
 
-h1 {
+h1, h2 {
     font-family: var(--title-font);
     font-weight: normal;
 }
@@ -351,6 +353,9 @@ a {
     padding: 20px;
     max-width: 1000px;
     margin: 0 auto;
+    
+    
+
 }
 .verse-list {
     display: flex;
