@@ -35,7 +35,7 @@ app.use((req, res, next) => {
 })
 
 // CONFIGURE HBS
-app.engine('hbs', exphbs({
+app.engine('hbs', exphbs.engine({
     defaultLayout: 'main',
     extname: '.hbs',
     helpers: {
