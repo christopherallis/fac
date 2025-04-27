@@ -1,7 +1,7 @@
 const express = require('express');
 //const ytLive = require('../lib/youtube-live')
 
-const router = require('express-promise-router')()
+const router = express.Router();
 
 router.get('/', async (req, res, next) => {
     //await ytLive.getLive()
