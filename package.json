@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "Website for FAC",
   "main": "app.js",
+  "engines": {
+    "node": "23.5.x"
+  },
   "scripts": {
     "start": "node .",
     "dev": "nodemon .",
