@@ -21,7 +21,7 @@ router.get('/events/communityday', async (req, res, next) => {
 })
 
 router.get('/events/festival/', async (req, res, next) => {
-    res.render('partials/events/festival24');
+    res.render('partials/events/festival25');
 
 })
 
